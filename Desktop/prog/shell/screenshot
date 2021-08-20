@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+scrot -e 'mv $f ~/Pictures/screenshot' '%F_%T.png' && notify-send -u 'low' "screenshot saved to ~/Pictures/screenshot" || notify-send -u 'critical' "screenshot failed. something went wrong"
