@@ -1,0 +1,37 @@
+#unbind tecla
+toggle_pause
+toggle_keep_vp
+save_filelist
+
+#unbind função
+menu_up
+menu_down
+menu_parent
+menu_child
+scroll_up
+scroll_down
+scroll_right
+scroll_left
+zoom_in
+zoom_out
+next_img
+prev_imk
+
+
+#binding
+scroll_up k
+scroll_down j
+scroll_right l
+scroll_left h
+
+zoom_in K
+zoom_out J
+next_img L
+prev_img H
+
+menu_up k
+menu_down j
+menu_parent h
+menu_child l
+
+fullscreen f
