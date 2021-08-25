@@ -4,14 +4,10 @@ remove Control = Control_L
 !control esquerdo para caps lock
 !	keycode  66 = Caps_Lock NoSymbol Caps_Lock
 	clear Lock
-	keycode 66 = Control_L NoSymbol Control_L
+	keycode 66 = Control_L NoSymbol Control_L 
 
-!caps lock para control esquerdo
-!	keycode  37 = Control_L NoSymbol Control_L
-	keycode 37 = Caps_Lock NoSymbol Caps_Lock
-
-!shift direito dedo mindinho
-	keycode 51 = 0xffe1 0x0 0xffe1
+!caps lock para mindinho direito 
+	keycode 51 = Caps_Lock NoSymbol Caps_Lock
 
 add Lock = Caps_Lock
 add Control = Control_L
