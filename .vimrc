@@ -105,7 +105,7 @@ filetype plugin indent on    " required
 	"salvar e ir para arquivo em baixo do cursor
 		noremap gf :write<CR>gf
 	"buffer previo
-		noremap <BS> :bprev<CR> 
+		noremap fg :bprev<CR> 
 	"abrir esse arquivo
 		noremap <F1> :edit $HOME/.vimrc <CR>
 	"aplicar mudanças (sem a necessidade de reiniciar o vim)

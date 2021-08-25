@@ -36,6 +36,7 @@ alias mm="$SHELL_FOLDER/mount"
 alias gits="git switch"
 alias gitb="git branch"
 alias gitm="git merge"
+alias logout="pkill -u $USER"
 
 
 

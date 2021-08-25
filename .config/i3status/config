@@ -12,22 +12,13 @@ general {
 }
 
 
-order += "wireless _first_"
-order += "ethernet _first_"
 order += "disk /"
 order += "memory"
 order += "battery all"
+order += "wireless _first_"
+order += "ethernet _first_"
 order += "tztime local"
 
-wireless _first_ {
-        format_up = "%bitrate "
-        format_down = "WIFIが切断される"
-}
-
-ethernet _first_ {
-        format_up = "E: %ip (%speed)"
-        format_down = "ETHERNETが切断される"
-}
 
 disk "/" {
         format = "/: %avail"
@@ -43,6 +34,15 @@ battery all {
         format = "%status %percentage %remaining"
 }
 
+wireless _first_ {
+        format_up = "%bitrate "
+        format_down = "WIFIが切断される"
+}
+
+ethernet _first_ {
+        format_up = "E: %ip (%speed)"
+        format_down = "ETHERNETが切断される"
+}
 tztime local {
         format = "%Y-%m-%d %H:%M:%S"
 }

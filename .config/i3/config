@@ -192,7 +192,6 @@ bar {
 #borda e foco
 for_window [class="feh"] floating enable
 for_window [class="mpv"] floating enable
-for_window [class="^.*"] border pixel 1
 for_window [class="Brave-browser"] move container to workspace 2
 for_window [class="Anki"] move container to workspace 10
 focus_follows_mouse no
@@ -200,10 +199,11 @@ focus_follows_mouse no
 
 #janelas
 floating_maximum_size 1100 x 600
+for_window [class="^.*"] floating enable
+#for_window [class="^.*"] border pixel 1
 
 #rice
-client.focused #296f24 #285577 #ffffff #2e9ef4  #296f24
-
+client.focused #296f24 #285577 #ffffff #2e9ef4  #296f24 
 
 #screenshot
 bindsym $mod+w exec $HOME/Desktop/prog/shell/screenshot
