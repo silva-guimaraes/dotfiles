@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-WALLPAPER=~/Pictures/wallpaper
-feh --bg-scale $WALLPAPER/indiopara.jpg
-pkill compton ; compton &
-

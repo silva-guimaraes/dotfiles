@@ -1,2 +1,0 @@
-#!/usr/bin/env bash
-sudo mount /dev/$(ls /dev | grep sd | dmenu) /home/xi/mount 2>/dev/null || sudo umount /home/xi/mount
