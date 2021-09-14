@@ -13,9 +13,10 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 	Plugin 'VundleVim/Vundle.vim'
 	Plugin 'vim-airline/vim-airline'
-	Plugin 'octol/vim-cpp-enhanced-highlight'
 	Plugin 'vim-airline/vim-airline-themes'
+	Plugin 'octol/vim-cpp-enhanced-highlight'
 	Plugin 'jiangmiao/auto-pairs'
+	Plugin 'vim-syntastic/syntastic'
 
 
 
@@ -64,6 +65,11 @@ filetype plugin indent on    " required
 	set encoding=utf-8				"todos os carecteres
 	
 
+"syntastic
+	let g:syntastic_always_populate_loc_list = 1
+	let g:syntastic_auto_loc_list = 1
+	let g:syntastic_check_on_open = 1
+	let g:syntastic_check_on_wq = 0
 
 
 "mappings -------------------------------------
@@ -80,7 +86,7 @@ filetype plugin indent on    " required
 
 
 	"newline
-		map <CR> o<Esc>
+		noremap <CR> o<Esc>k
 
 
 	"registrador do clipboard
@@ -132,8 +138,7 @@ filetype plugin indent on    " required
 		noremap <F3> :!./a.out<CR>
 	"make e rodar (não esquecer de configurar o makefile antes disso)
 		noremap <F4> :write <CR> :!make -s && ./a.out <CR>
-	"compilar buffer atual com gcc e rodar
-		noremap <F5> :write <CR> :!clear && gcc % && ./a.out <CR> 
-
-
-
+	"compilar buffer atual com gcc e rodar. favor não por nenhum caractere
+	"depois do enter 
+		noremap <F5> :write<CR>:!clear && gcc % && ./a.out <CR>
+	".

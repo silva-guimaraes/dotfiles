@@ -208,6 +208,10 @@ client.focused #296f24 #285577 #ffffff #2e9ef4  #296f24
 bindsym $mod+w exec screentiro
 
 
+#gaps
+#gaps [inner|outer|horizontal|vertical|top|left|bottom|right] 20
+
+
 
 
 

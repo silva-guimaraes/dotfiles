@@ -27,7 +27,7 @@ disk "/" {
 memory {
         format = "RAM %available"
         threshold_degraded = "1G"
-        format_degraded = "メモリ < %available"
+        format_degraded = "RAM < %available"
 }
 
 battery all {
@@ -37,12 +37,12 @@ battery all {
 
 wireless _first_ {
         format_up = "%bitrate "
-        format_down = "WIFIが切断される"
+        format_down = "WIFI"
 }
 
 ethernet _first_ {
         format_up = "E: %ip (%speed)"
-        format_down = "ETHERNETが切断される"
+        format_down = "ETHERNET"
 }
 tztime local {
         format = "%Y-%m-%d %H:%M:%S"
