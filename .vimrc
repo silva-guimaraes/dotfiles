@@ -108,6 +108,7 @@ filetype plugin indent on    " required
 		noremap gm g*
 
 
+"buffer
 	"salvar e ir para arquivo em baixo do cursor
 		noremap gf :write<CR>gf
 	"buffer previo
@@ -118,10 +119,11 @@ filetype plugin indent on    " required
 		noremap <F2> :so $HOME/.vimrc <CR>
 
 
+"janelas
 	"nova janela
 		noremap ss :split<Return><C-w>w
 		noremap sv :vsplit<Return><C-w>h 
-	"mover para janela
+	"mover para janelas
 		noremap sh <C-w>h
 		noremap sk <C-w>k
 		noremap sj <C-w>j
@@ -134,11 +136,11 @@ filetype plugin indent on    " required
 		noremap SF :q!<CR>
 
 
-	"rodar ultima compilação
+"rodar
+	"ultima compilação. 
 		noremap <F3> :!./a.out<CR>
-	"make e rodar (não esquecer de configurar o makefile antes disso)
+	"make, se existente
 		noremap <F4> :write <CR> :!make -s && ./a.out <CR>
-	"compilar buffer atual com gcc e rodar. favor não por nenhum caractere
-	"depois do enter 
-		noremap <F5> :write<CR>:!clear && gcc % && ./a.out <CR>
-	".
+	"buffer atual com o gcc	
+	noremap <F5> :write<CR>:!clear && gcc % && ./a.out <CR>
+	"favor não por nenhum caractere depois de nenhum CR
