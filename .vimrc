@@ -83,8 +83,9 @@ filetype plugin indent on    " required
 	"deletar/copiar linha excluindo whitespace
 		nnoremap <Leader>dd _yg_"_dd
 		nnoremap <Leader>yy _yg_
-
-
+	"pular um bloco
+		noremap { }
+		noremap } {
 	"newline
 		noremap <CR> o<Esc>k
 
@@ -97,8 +98,8 @@ filetype plugin indent on    " required
 	"voltar para a ultima linha editada
 		noremap gi gi<Esc> 
 	"descer e subir rapidão vruuum
-		noremap <C-j> 10j
-		noremap <C-k> 10k 
+		noremap <C-j> 5j
+		noremap <C-k> 5k 
 	"shift + esquerda/direito inicio/final da linha
 		noremap H ^
 		noremap L g_
