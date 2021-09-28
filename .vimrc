@@ -113,7 +113,7 @@ filetype plugin indent on    " required
 	"salvar e ir para arquivo em baixo do cursor
 		noremap gf :write<CR>gf
 	"buffer previo
-		noremap fg :bprev<CR> 
+		noremap <C-g> :bprev<CR> 
 	"abrir esse arquivo
 		noremap <F1> :edit $HOME/.vimrc <CR>
 	"aplicar mudanças (sem a necessidade de reiniciar o vim)
@@ -122,8 +122,8 @@ filetype plugin indent on    " required
 
 "janelas
 	"nova janela
-		noremap ss :split<Return><C-w>w
-		noremap sv :vsplit<Return><C-w>h 
+		noremap ss :split<Return><C-w>
+		noremap sv :vsplit<Return><C-w> 
 	"mover para janelas
 		noremap sh <C-w>h
 		noremap sk <C-w>k
@@ -132,8 +132,8 @@ filetype plugin indent on    " required
 
 
 	"salvar
+		noremap <C-s> :write<CR>
 		noremap sd :quit<CR>
-		noremap fd :write<CR>
 		noremap SF :q!<CR>
 
 
@@ -143,5 +143,23 @@ filetype plugin indent on    " required
 	"make, se existente
 		noremap <F4> :write <CR> :!make -s && ./a.out <CR>
 	"buffer atual com o gcc	
-	noremap <F5> :write<CR>:!clear && gcc % && ./a.out <CR>
+	noremap <F5> :write<CR>:!clear && gcc % -lm && ./a.out <CR>
 	"favor não por nenhum caractere depois de nenhum CR
+	"
+	"
+	"
+	"
+	"
+	"
+	"
+	"
+	"
+	"
+	"
+	"
+	"
+	"
+	"
+	"desmapeado esses dois so pra treinar
+		noremap h <nop>
+		noremap l <nop>

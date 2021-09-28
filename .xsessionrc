@@ -6,7 +6,6 @@ sleep 10 && brave-browser &
 exo &
 qbittorrent &
 sleep 2 ; gnome-terminal &
-xset r rate 250 45
 #japanese locale
 #. LANG=ja_JP.sjis 
 

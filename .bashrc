@@ -4,9 +4,13 @@ shopt -s autocd
 shopt -s cdspell
 #pfetch iniciar da sessão
 pfetch
-
+#desabilitar software flow control
+stty stop ""
 #???
 export TERM=xterm-256color 
+#teclado
+xset r rate 250 45
+xmodmap $HOME/.Xmodmap
 
 #prompt
 red=$(tput setaf 3 && tput bold)
