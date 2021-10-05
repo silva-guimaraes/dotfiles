@@ -31,6 +31,7 @@ alias neofetch="neofetch --disable gpu resolution icons host theme"
 alias nfetch="neofetch --disable gpu resolution icons host theme"
 alias xclip="xclip -selection clipboard"
 alias gcc="time gcc -Wall -Wextra -Werror -Wpedantic"
+alias javac="time javac"
 alias rr="ranger"
 alias ss="source $HOME/.bashrc"
 alias df="df -h" 
@@ -42,6 +43,7 @@ alias gits="git switch"
 alias gitb="git branch"
 alias gitm="git merge"
 alias logout="pkill -u $USER"
+alias gdbs="gcc -g *.c && gdb a.out"
 
 
 

@@ -180,13 +180,24 @@ bindsym $mod+r mode "resize"
 bar { 
 	status_command i3status 
 	position top 
-	colors { 
-			focused_workspace  #1E3C03 #6DFB00 #000000 
-			active_workspace   #1E3C17 #123700 #FFFFFF 
-			inactive_workspace #333333 #20321C #888888 
-			urgent_workspace   #000000 #FFFE00 #101010 
-			binding_mode       #000000 #FFFE00 #101010 
-		} 
+	colors {
+		background #E5E5E5
+		statusline #000000
+		separator  #3F3F3F
+
+		focused_workspace  #E5E5E5 #2EEC50 #000000
+		active_workspace   #E5E5E5 #E7E7E7 #000000
+		inactive_workspace #FFFFFF #FFFFFF #888888
+		urgent_workspace   #0300FF #EBFF00 #000000
+		binding_mode       #2E00FF #F3FF00 #000000
+	}
+	# colors { 
+	# 		focused_workspace  #1E3C03 #6DFB00 #000000 
+	# 		active_workspace   #1E3C17 #123700 #FFFFFF 
+	# 		inactive_workspace #333333 #20321C #888888 
+	# 		urgent_workspace   #000000 #FFFE00 #101010 
+	# 		binding_mode       #000000 #FFFE00 #101010 
+	# 	} 
 } 
 
 #borda e foco

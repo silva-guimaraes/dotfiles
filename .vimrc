@@ -145,21 +145,3 @@ filetype plugin indent on    " required
 	"buffer atual com o gcc	
 	noremap <F5> :write<CR>:!clear && gcc % -lm && ./a.out <CR>
 	"favor não por nenhum caractere depois de nenhum CR
-	"
-	"
-	"
-	"
-	"
-	"
-	"
-	"
-	"
-	"
-	"
-	"
-	"
-	"
-	"
-	"desmapeado esses dois so pra treinar
-		noremap h <nop>
-		noremap l <nop>

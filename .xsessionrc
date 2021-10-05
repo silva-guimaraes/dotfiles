@@ -1,11 +1,9 @@
-#wallpaper
+wallpaper
 sh $HOME/.fehbg 
 
 #padrão 
-sleep 10 && brave-browser &
 exo &
 qbittorrent &
-sleep 2 ; gnome-terminal &
 #japanese locale
 #. LANG=ja_JP.sjis 
 
