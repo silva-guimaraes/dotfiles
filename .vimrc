@@ -17,6 +17,7 @@ call vundle#begin()
 	Plugin 'octol/vim-cpp-enhanced-highlight'
 	Plugin 'jiangmiao/auto-pairs'
 	Plugin 'vim-syntastic/syntastic'
+	Plugin 'https://github.com/ycm-core/YouCompleteMe'
 
 
 
@@ -44,10 +45,10 @@ filetype plugin indent on    " required
 	let g:cpp_class_scope_highlight = 1		"syntaxe c++
 	let g:cpp_member_variable_highlight = 1		"syntaxe c++
 	syntax on					"syntaxe ligado
-	colorscheme ron					"esquema de cor
+	colorscheme ron				"esquema de cor
 	set laststatus=2				"mostrar barra de status mesmo com apenas uma janela aberta
 	"linha clara em baixo do curso
-	hi cursorline cterm=none ctermbg=234 term=reverse	 
+	"hi cursorline cterm=none ctermbg=234 term=reverse	 
 
 
 "ultilidade

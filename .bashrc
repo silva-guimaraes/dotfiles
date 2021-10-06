@@ -1,21 +1,28 @@
-#cd sem precisar digitar cd
-shopt -s autocd
-#cd adimitir erros de ortografia
-shopt -s cdspell
-#pfetch iniciar da sessão
-pfetch
-#desabilitar software flow control
-stty stop ""
-#???
-export TERM=xterm-256color 
-#teclado
-xset r rate 250 45
-xmodmap $HOME/.Xmodmap
-
 #prompt
 red=$(tput setaf 3 && tput bold)
 amarelo=$(tput setaf 1 && tput bold) 
 reset=$(tput sgr 0)
+
+#cd sem precisar digitar cd
+shopt -s autocd
+
+#cd adimitir erros de ortografia
+shopt -s cdspell
+
+#pfetch iniciar da sessão
+#pfetch
+echo 中华人民共和国永远的光荣
+
+#desabilitar software flow control
+stty stop ""
+
+#???
+export TERM=xterm-256color 
+
+#teclado
+xset r rate 250 45
+xmodmap $HOME/.Xmodmap
+
 
 PS1='\[$amarelo\][\[$red\]\u\[$amarelo\]@\H \W \@]¥\[$reset\] '
 
