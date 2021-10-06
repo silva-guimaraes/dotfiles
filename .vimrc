@@ -16,7 +16,7 @@ call vundle#begin()
 	Plugin 'vim-airline/vim-airline-themes'
 	Plugin 'octol/vim-cpp-enhanced-highlight'
 	Plugin 'jiangmiao/auto-pairs'
-	Plugin 'vim-syntastic/syntastic'
+	"Plugin 'vim-syntastic/syntastic'
 	Plugin 'https://github.com/ycm-core/YouCompleteMe'
 
 
