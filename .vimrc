@@ -44,8 +44,13 @@ filetype plugin indent on    " required
 "rice
 	let g:cpp_class_scope_highlight = 1		"syntaxe c++
 	let g:cpp_member_variable_highlight = 1		"syntaxe c++
-	syntax on					"syntaxe ligado
-	colorscheme ron				"esquema de cor
+	let g:airline_theme='sol'
+	syntax on					"syntaxe ligado 
+	colorscheme pablo				"esquema de cor
+	set background=light				"texto com contraste correto
+	"visual contraste
+	hi Visual term=reverse cterm=reverse 
+
 	set laststatus=2				"mostrar barra de status mesmo com apenas uma janela aberta
 	"linha clara em baixo do curso
 	"hi cursorline cterm=none ctermbg=234 term=reverse	 
@@ -66,12 +71,14 @@ filetype plugin indent on    " required
 	set encoding=utf-8				"todos os carecteres
 	
 
-"syntastic
+"syntastic/YCM
 	let g:syntastic_always_populate_loc_list = 1
 	let g:syntastic_auto_loc_list = 1
 	let g:syntastic_check_on_open = 1
 	let g:syntastic_check_on_wq = 0
-
+	let g:ycm_error_symbol = '誤' 
+	let g:loaded_youcompleteme = 0
+	let g:loaded_youcompleteme=1
 
 "mappings -------------------------------------
 
@@ -87,9 +94,12 @@ filetype plugin indent on    " required
 	"pular um bloco
 		noremap { }
 		noremap } {
-	"newline
-		noremap <CR> o<Esc>k
+	"selecionar proximo parentesis
+		noremap ( f(
+		noremap ) f)
 
+	"newline
+		noremap <CR> o<Esc>k 
 
 	"registrador do clipboard
 		noremap <leader><leader> "+
@@ -98,6 +108,9 @@ filetype plugin indent on    " required
 		
 	"voltar para a ultima linha editada
 		noremap gi gi<Esc> 
+	"ir para primeira ou ultima linha
+		noremap gj <S-g>
+		noremap gk gg
 	"descer e subir rapidão vruuum
 		noremap <C-j> 5j
 		noremap <C-k> 5k 

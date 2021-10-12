@@ -1,3 +1,6 @@
+#urxvt
+xrdb ~/.Xresources
+
 #prompt
 red=$(tput setaf 3 && tput bold)
 amarelo=$(tput setaf 1 && tput bold) 
@@ -36,24 +39,19 @@ alias sp="sudo apt"
 alias ap="apropos"
 alias neofetch="neofetch --disable gpu resolution icons host theme"
 alias nfetch="neofetch --disable gpu resolution icons host theme"
-alias xclip="xclip -selection clipboard"
-alias gcc="time gcc -Wall -Wextra -Werror -Wpedantic"
-alias javac="time javac"
+alias xclip="xclip -selection clipboard" 
 alias rr="ranger"
 alias ss="source $HOME/.bashrc"
 alias df="df -h" 
 alias yt="youtube-dl" 
 alias jpwine="LANG=ja_JP.sjis wine" 
-alias lt='ls --human-readable --size -1 -S --classify'
-
-alias gits="git switch"
-alias gitb="git branch"
-alias gitm="git merge"
+alias lt='ls --human-readable --size -1 -S --classify' 
 alias logout="pkill -u $USER"
-alias gdbs="gcc -g *.c && gdb a.out"
+alias gdbs="gcc -g *.c && gdb a.out" 
+alias poweroff="pkill anki && poweroff"
 
-
-
+alias gcc="time gcc -Wall -Wextra -Werror -Wpedantic"
+alias javac="time javac -Xdiags:verbose"
 
 
 #suporte de cor

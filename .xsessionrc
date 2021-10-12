@@ -5,6 +5,7 @@ sh $HOME/.fehbg
 exo &
 qbittorrent &
 discord &
+anki &
 #japanese locale
 #. LANG=ja_JP.sjis 
 
