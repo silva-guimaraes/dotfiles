@@ -29,6 +29,8 @@ xmodmap $HOME/.Xmodmap
 
 PS1='\[$amarelo\][\[$red\]\u\[$amarelo\]@\H \W \@]¥\[$reset\] '
 
+PATH=$PATH:$HOME/desktop/prog/shell
+
 
 #aliases, shortcuts
 alias rm="rm -I"
@@ -38,7 +40,6 @@ alias acs="apt-cache search"
 alias sp="sudo apt"
 alias ap="apropos"
 alias neofetch="neofetch --disable gpu resolution icons host theme"
-alias nfetch="neofetch --disable gpu resolution icons host theme"
 alias xclip="xclip -selection clipboard" 
 alias rr="ranger"
 alias ss="source $HOME/.bashrc"

@@ -77,8 +77,7 @@ filetype plugin indent on    " required
 	let g:syntastic_check_on_open = 1
 	let g:syntastic_check_on_wq = 0
 	let g:ycm_error_symbol = '誤' 
-	let g:loaded_youcompleteme = 0
-	let g:loaded_youcompleteme=1
+	let g:loaded_youcompleteme = 1
 
 "mappings -------------------------------------
 

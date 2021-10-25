@@ -1,4 +1,5 @@
-remove Lock = Caps_Lock
+!esse remove me prompta uma aviso muito chatinho ao iniciar o bash
+!remove Lock = Caps_Lock
 remove Control = Control_L
 
 !control esquerdo para caps lock
@@ -7,7 +8,7 @@ remove Control = Control_L
 	keycode 66 = Control_L NoSymbol Control_L 
 
 !caps lock para mindinho direito 
-	keycode 51 = Caps_Lock NoSymbol Caps_Lock
+	!keycode 51 = Caps_Lock NoSymbol Caps_Lock
 
 add Lock = Caps_Lock
 add Control = Control_L
