@@ -152,9 +152,9 @@ filetype plugin indent on    " required
 
 "rodar
 	"ultima compilação. 
-		noremap <F3> :!./a.out<CR>
-	"make, se existente
-		noremap <F4> :write <CR> :!make -s && ./a.out <CR>
-	"buffer atual com o gcc	
-	noremap <F5> :write<CR>:!clear && gcc % -lm && ./a.out <CR>
+	"	noremap <F3> :!./a.out<CR>
+	"make
+		noremap <F4> :write <CR> :!make<CR>
+	"make run	
+		noremap <F5> :write<CR>:!clear && make run<CR>
 	"favor não por nenhum caractere depois de nenhum CR

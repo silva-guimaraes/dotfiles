@@ -1,6 +1,9 @@
 wallpaper
 sh $HOME/.fehbg 
 
+#teclado ruim
+xmodmap $HOME/desktop/prog/xmod/tecladoruim &
+
 #padrão 
 exo &
 qbittorrent &
@@ -10,7 +13,7 @@ anki &
 #. LANG=ja_JP.sjis 
 
 #desativar touchapad
-Theme = transparent-light
+synclient TouchpadOff=1 &
 
 
 #LC_NUMERIC=pt_BR.UTF-8
