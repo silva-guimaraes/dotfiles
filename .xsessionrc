@@ -1,8 +1,9 @@
 wallpaper
 sh $HOME/.fehbg 
+source $HOME/.bashrc
 
 #teclado ruim
-xmodmap $HOME/desktop/prog/xmod/tecladoruim &
+xmodmap $HOME/desktop/prog/xmod/tecladoruim
 
 #padrão 
 exo &

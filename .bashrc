@@ -2,8 +2,8 @@
 xrdb ~/.Xresources
 
 #prompt
-red=$(tput setaf 3 && tput bold)
-amarelo=$(tput setaf 1 && tput bold) 
+red=$(tput setab 3 && tput setaf 1 && tput bold)
+amarelo=$(tput setab 3 && tput setaf 1 && tput bold) 
 reset=$(tput sgr 0)
 
 #cd sem precisar digitar cd
@@ -25,11 +25,15 @@ export TERM=xterm-256color
 #teclado
 xset r rate 250 45
 xmodmap $HOME/.Xmodmap
+xmodmap $HOME/desktop/prog/xmod/tecladoruim
 
 
-PS1='\[$amarelo\][\[$red\]\u\[$amarelo\]@\H \W \@]¥\[$reset\] '
+
+PS1='\[$amarelo\][\[$red\] \W/ \[$amarelo\]@\H \@]¥\[$reset\] '
 
 PATH=$PATH:$HOME/desktop/prog/shell
+PATH=$PATH:$HOME/repos/publico/apache-maven-3.8.3/bin
+
 
 
 #aliases, shortcuts
@@ -53,6 +57,9 @@ alias poweroff="pkill anki && poweroff"
 
 alias gcc="time gcc -Wall -Wextra -Werror -Wpedantic"
 alias javac="time javac -Xdiags:verbose"
+alias du="du -h -s"
+alias exo="exo 1>/dev/null &"
+alias ssh="ssh -v"
 
 
 #suporte de cor
@@ -66,4 +73,3 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi 
-

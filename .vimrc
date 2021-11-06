@@ -17,7 +17,7 @@ call vundle#begin()
 	Plugin 'octol/vim-cpp-enhanced-highlight'
 	Plugin 'jiangmiao/auto-pairs'
 	"Plugin 'vim-syntastic/syntastic'
-	Plugin 'https://github.com/ycm-core/YouCompleteMe'
+	"Plugin 'https://github.com/ycm-core/YouCompleteMe'
 
 
 
@@ -63,13 +63,16 @@ filetype plugin indent on    " required
 	set showcmd					"mostrar quais teclas foram pressionadas
 	set sidescrolloff=2				"ponteiro nunca fica a N caracteres perto da borda
 	set scrolloff=8					"ponteiro nunca ficar a menos de N linhas perto da borda
-	set cursorline
+	set cursorline					"linha debaixo do cursor
 
 
 "caracteres
 	set spelllang=eng_us,pt_br			"spellcheck linguas
 	set encoding=utf-8				"todos os carecteres
-	
+	set shiftwidth=4				"quantos espaços para indentar 
+	set nocindent
+	set smartindent
+	filetype indent on
 
 "syntastic/YCM
 	let g:syntastic_always_populate_loc_list = 1
@@ -152,7 +155,7 @@ filetype plugin indent on    " required
 
 "rodar
 	"ultima compilação. 
-	"	noremap <F3> :!./a.out<CR>
+		noremap <F3> :tab new<CR>:e Makefile<CR>
 	"make
 		noremap <F4> :write <CR> :!make<CR>
 	"make run	
