@@ -2,8 +2,7 @@
 xrdb ~/.Xresources
 
 #prompt
-red=$(tput setab 3 && tput setaf 1 && tput bold)
-amarelo=$(tput setab 3 && tput setaf 1 && tput bold) 
+red=$(tput setaf 1 && tput bold)
 reset=$(tput sgr 0)
 
 #cd sem precisar digitar cd
@@ -28,12 +27,10 @@ xmodmap $HOME/.Xmodmap
 xmodmap $HOME/desktop/prog/xmod/tecladoruim
 
 
-
-PS1='\[$amarelo\][\[$red\] \W/ \[$amarelo\]@\H \@]¥\[$reset\] '
+PS1='\[$red\][ \u@\H \A] \W ¥\[$reset\] '
 
 PATH=$PATH:$HOME/desktop/prog/shell
 PATH=$PATH:$HOME/repos/publico/apache-maven-3.8.3/bin
-
 
 
 #aliases, shortcuts
@@ -42,7 +39,6 @@ alias cp="cp -r"
 alias la="ls -a"
 alias acs="apt-cache search"
 alias sp="sudo apt"
-alias ap="apropos"
 alias neofetch="neofetch --disable gpu resolution icons host theme"
 alias xclip="xclip -selection clipboard" 
 alias rr="ranger"
@@ -55,11 +51,12 @@ alias logout="pkill -u $USER"
 alias gdbs="gcc -g *.c && gdb a.out" 
 alias poweroff="pkill anki && poweroff"
 
-alias gcc="time gcc -Wall -Wextra -Werror -Wpedantic"
+# alias gcc="time gcc -Wall -Wextra -Werror -Wpedantic"
 alias javac="time javac -Xdiags:verbose"
 alias du="du -h -s"
-alias exo="exo 1>/dev/null &"
+alias exo="exo &"
 alias ssh="ssh -v"
+alias rsync="time rsync -v"
 
 
 #suporte de cor

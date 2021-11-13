@@ -8,7 +8,7 @@ remove Control = Control_L
 	keycode 66 = Control_L NoSymbol Control_L 
 
 !caps lock para mindinho direito 
-	!keycode 51 = Caps_Lock NoSymbol Caps_Lock
+	keycode 37 = Caps_Lock NoSymbol Caps_Lock
 
 add Lock = Caps_Lock
 add Control = Control_L
