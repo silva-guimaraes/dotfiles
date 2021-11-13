@@ -45,6 +45,7 @@ alias rr="ranger"
 alias ss="source $HOME/.bashrc"
 alias df="df -h" 
 alias yt="youtube-dl" 
+alias banddl="youtube-dl -o '%(autonumber)02d %(title)s.%(ext)s'"
 alias jpwine="LANG=ja_JP.sjis wine" 
 alias lt='ls --human-readable --size -1 -S --classify' 
 alias logout="pkill -u $USER"
