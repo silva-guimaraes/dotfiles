@@ -23,8 +23,8 @@ export TERM=xterm-256color
 
 #teclado
 xset r rate 250 45
-xmodmap $HOME/.Xmodmap
-xmodmap $HOME/desktop/prog/xmod/tecladoruim
+# xmodmap $HOME/.Xmodmap
+# xmodmap $HOME/desktop/prog/xmod/tecladoruim
 
 
 PS1='\[$red\][ \u@\H \A] \W ¥\[$reset\] '
@@ -42,7 +42,7 @@ alias sp="sudo apt"
 alias neofetch="neofetch --disable gpu resolution icons host theme"
 alias xclip="xclip -selection clipboard" 
 alias rr="ranger"
-alias ss="source $HOME/.bashrc"
+alias fonte="source $HOME/.bashrc"
 alias df="df -h" 
 alias yt="youtube-dl" 
 alias jpwine="LANG=ja_JP.sjis wine" 
