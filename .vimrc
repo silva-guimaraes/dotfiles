@@ -67,7 +67,8 @@ filetype plugin indent on    " required
 
 
 "caracteres
-	set spelllang=eng_us,pt_br			"spellcheck linguas
+	set nospell
+	set spelllang=en_us,pt_br			"spellcheck linguas
 	set encoding=utf-8				"todos os carecteres
 	set shiftwidth=4				"quantos espaços para indentar 
 	set nocindent
@@ -75,12 +76,12 @@ filetype plugin indent on    " required
 	filetype indent on
 
 "syntastic/YCM
-	let g:syntastic_always_populate_loc_list = 1
-	let g:syntastic_auto_loc_list = 1
-	let g:syntastic_check_on_open = 1
-	let g:syntastic_check_on_wq = 0
-	let g:ycm_error_symbol = '誤' 
-	let g:loaded_youcompleteme = 1
+	"let g:syntastic_always_populate_loc_list = 1
+	"let g:syntastic_auto_loc_list = 1
+	"let g:syntastic_check_on_open = 1
+	"let g:syntastic_check_on_wq = 0
+	"let g:ycm_error_symbol = '誤' 
+	"let g:loaded_youcompleteme = 1
 
 "mappings -------------------------------------
 

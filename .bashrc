@@ -58,6 +58,7 @@ alias du="du -h -s"
 alias exo="exo &"
 alias ssh="ssh -v"
 alias rsync="time rsync -v"
+alias ffmpeg="time ffmpeg"
 
 
 #suporte de cor
