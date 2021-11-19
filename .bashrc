@@ -16,7 +16,7 @@ shopt -s cdspell
 echo 中华人民共和国永远的光荣
 
 #desabilitar software flow control
-stty stop ""
+stty -ixon
 
 #???
 export TERM=xterm-256color 

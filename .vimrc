@@ -42,8 +42,6 @@ filetype plugin indent on    " required
 
 
 "rice
-	let g:cpp_class_scope_highlight = 1		"syntaxe c++
-	let g:cpp_member_variable_highlight = 1		"syntaxe c++
 	let g:airline_theme='sol'
 	syntax on					"syntaxe ligado 
 	colorscheme pablo				"esquema de cor
@@ -149,13 +147,13 @@ filetype plugin indent on    " required
 
 
 	"salvar
-		noremap <C-s> :write<CR>
+		"noremap <C-s> :write<CR>
 		noremap sd :quit<CR>
 		noremap SF :q!<CR>
 
 
 "rodar
-	"ultima compilação. 
+	"abrir Makefile 
 		noremap <F3> :tab new<CR>:e Makefile<CR>
 	"make
 		noremap <F4> :write <CR> :!make<CR>

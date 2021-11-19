@@ -224,12 +224,4 @@ bindsym $mod+w exec screentiro
 
 
 #gaps
-#gaps [inner|outer|horizontal|vertical|top|left|bottom|right] 20
-
-
-
-
-
-
-
-
+#gaps [inner|outer|horizontal|vertical|top|left|bottom|right] 20 
