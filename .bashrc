@@ -1,5 +1,12 @@
 #urxvt
-xrdb ~/.Xresources
+# xrdb ~/.Xresources
+
+# if not running interactively, don't do anything
+ case $- in
+     *i*) ;;
+     *) return;;
+ esac
+
 
 #prompt
 red=$(tput setaf 1 && tput bold)
@@ -13,7 +20,7 @@ shopt -s cdspell
 
 #pfetch iniciar da sessão
 #pfetch
-echo 中华人民共和国永远的光荣
+# echo 中华人民共和国永远的光荣
 
 #desabilitar software flow control
 stty stop ""
@@ -22,7 +29,7 @@ stty stop ""
 export TERM=xterm-256color 
 
 #teclado
-xset r rate 250 45
+# xset r rate 250 45
 # xmodmap $HOME/.Xmodmap
 # xmodmap $HOME/desktop/prog/xmod/tecladoruim
 
