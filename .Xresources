@@ -1,5 +1,4 @@
 ! Colorscheme
-
 !! special
 !!*.foreground: #93a1a1
 !*.foreground: #000000
@@ -42,3 +41,11 @@
 !*.color15: #fdf6e3
 
 URxvt*scrollBar: false     
+URxvt.perl-ext-common: ...,tabbed,...  
+URxvt.tabbed.tabbar-fg: -2
+URxvt.tabbed.tabbar-bg: -1
+URxvt.tabbed.tab-fg: -2
+URxvt.tabbed.tab-bg: -1 
+URxvt.keysym.C-M-c: builtin-string:
+URxvt.keysym.C-M-v: builtin-string:
+URxvt.keysym.Control-Shift-V:     perl:pasta:paste

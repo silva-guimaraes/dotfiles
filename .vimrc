@@ -159,4 +159,6 @@ filetype plugin indent on    " required
 		noremap <F4> :write <CR> :!make<CR>
 	"make run	
 		noremap <F5> :write<CR>:!clear && make run<CR>
+
+		noremap <F6> :cope 12<CR>
 	"favor não por nenhum caractere depois de nenhum CR

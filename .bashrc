@@ -56,8 +56,8 @@ alias poweroff="pkill anki && poweroff"
 alias javac="time javac -Xdiags:verbose"
 alias du="du -h -s"
 alias exo="exo &"
-alias ssh="ssh -v"
-alias rsync="time rsync -v"
+alias rsync="time rsync -vP"
+alias ssh="ssh -q"
 alias ffmpeg="time ffmpeg"
 
 
