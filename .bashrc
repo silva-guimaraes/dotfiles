@@ -23,7 +23,7 @@ shopt -s cdspell
 # echo 中华人民共和国永远的光荣
 
 #desabilitar software flow control
-stty stop ""
+stty -ixon
 
 #???
 export TERM=xterm-256color 
@@ -63,8 +63,9 @@ alias poweroff="pkill anki && poweroff"
 alias javac="time javac -Xdiags:verbose"
 alias du="du -h -s"
 alias exo="exo &"
-alias ssh="ssh -v"
-alias rsync="time rsync -v"
+alias rsync="time rsync -vP"
+alias ssh="ssh -q"
+alias ffmpeg="time ffmpeg"
 
 
 #suporte de cor

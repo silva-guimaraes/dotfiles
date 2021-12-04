@@ -43,6 +43,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec urxvt
+bindsym $mod+Shift+Return exec urxvt -e ranger
 
 
 # kill focused window
@@ -223,12 +224,4 @@ bindsym $mod+w exec screentiro
 
 
 #gaps
-#gaps [inner|outer|horizontal|vertical|top|left|bottom|right] 20
-
-
-
-
-
-
-
-
+#gaps [inner|outer|horizontal|vertical|top|left|bottom|right] 20 

@@ -42,8 +42,6 @@ filetype plugin indent on    " required
 
 
 "rice
-	let g:cpp_class_scope_highlight = 1		"syntaxe c++
-	let g:cpp_member_variable_highlight = 1		"syntaxe c++
 	let g:airline_theme='sol'
 	syntax on					"syntaxe ligado 
 	colorscheme pablo				"esquema de cor
@@ -67,7 +65,8 @@ filetype plugin indent on    " required
 
 
 "caracteres
-	set spelllang=eng_us,pt_br			"spellcheck linguas
+	set nospell
+	set spelllang=en_us,pt_br			"spellcheck linguas
 	set encoding=utf-8				"todos os carecteres
 	set shiftwidth=4				"quantos espaços para indentar 
 	set nocindent
@@ -75,12 +74,12 @@ filetype plugin indent on    " required
 	filetype indent on
 
 "syntastic/YCM
-	let g:syntastic_always_populate_loc_list = 1
-	let g:syntastic_auto_loc_list = 1
-	let g:syntastic_check_on_open = 1
-	let g:syntastic_check_on_wq = 0
-	let g:ycm_error_symbol = '誤' 
-	let g:loaded_youcompleteme = 1
+	"let g:syntastic_always_populate_loc_list = 1
+	"let g:syntastic_auto_loc_list = 1
+	"let g:syntastic_check_on_open = 1
+	"let g:syntastic_check_on_wq = 0
+	"let g:ycm_error_symbol = '誤' 
+	"let g:loaded_youcompleteme = 1
 
 "mappings -------------------------------------
 
@@ -148,16 +147,18 @@ filetype plugin indent on    " required
 
 
 	"salvar
-		noremap <C-s> :write<CR>
+		"noremap <C-s> :write<CR>
 		noremap sd :quit<CR>
 		noremap SF :q!<CR>
 
 
 "rodar
-	"ultima compilação. 
+	"abrir Makefile 
 		noremap <F3> :tab new<CR>:e Makefile<CR>
 	"make
 		noremap <F4> :write <CR> :!make<CR>
 	"make run	
 		noremap <F5> :write<CR>:!clear && make run<CR>
+
+		noremap <F6> :cope 12<CR>
 	"favor não por nenhum caractere depois de nenhum CR
