@@ -204,6 +204,7 @@ bar {
 #xprop para descobrir class de um processo
 #borda e foco
 for_window [class="feh"] floating enable
+for_window [class="mpv"] floating enable
 for_window [class="Brave-browser"] move container to workspace 2
 for_window [class="qBittorrent"] move container to workspace 10
 for_window [class="Anki"] move container to workspace 10

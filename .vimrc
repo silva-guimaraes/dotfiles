@@ -110,8 +110,8 @@ filetype plugin indent on    " required
 	"voltar para a ultima linha editada
 		noremap gi gi<Esc> 
 	"ir para primeira ou ultima linha
-		noremap gj <S-g>
-		noremap gk gg
+		"noremap gj <S-g>
+		"noremap gk gg
 	"descer e subir rapidão vruuum
 		noremap <C-j> 5j
 		noremap <C-k> 5k 
@@ -162,3 +162,10 @@ filetype plugin indent on    " required
 
 		noremap <F6> :cope 12<CR>
 	"favor não por nenhum caractere depois de nenhum CR
+	"
+	"
+	inoremap <tab> <C-p>
+	inoremap <C-p> <tab>
+	noremap cp :.cc<CR>
+	command Make make! | cope
+	command Cmake !gcc % && ./a.out

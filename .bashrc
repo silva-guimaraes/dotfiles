@@ -57,7 +57,7 @@ alias javac="time javac -Xdiags:verbose"
 alias du="du -h -s"
 alias exo="exo &"
 alias rsync="time rsync -vP"
-alias ssh="ssh -q"
+alias ssh="ssh -q -X"
 alias ffmpeg="time ffmpeg"
 
 
