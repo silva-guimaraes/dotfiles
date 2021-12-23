@@ -169,3 +169,13 @@ filetype plugin indent on    " required
 	noremap cp :.cc<CR>
 	command Make make! | cope
 	command Cmake !gcc % && ./a.out
+
+
+	noremap <F7> :if exists("g:syntax_on") <Bar>              
+	    	\   syntax off <Bar>                             
+	    	\ else <Bar>                                     
+	    	\   syntax enable <Bar>                                  
+	    	\ endif <CR>
+
+
+
