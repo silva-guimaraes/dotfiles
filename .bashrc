@@ -62,7 +62,7 @@ alias gdbs="gcc -g *.c && gdb a.out"
 alias exo="exo &"
 alias ssh="ssh -q -X"
 
-[ command -v anki ] && alias poweroff="pkill anki && poweroff"
+command -v anki && alias poweroff="pkill anki && poweroff"
 
 #suporte de cor
 if [ -x /usr/bin/dircolors ]; then
