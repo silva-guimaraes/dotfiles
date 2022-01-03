@@ -1,31 +1,31 @@
-wallpaper
-sh $HOME/.fehbg 
-source $HOME/.bashrc
+export SCRIPT_DICT=$HOME/Desktop/prog/shell
+export XMOD_DICT=$HOME/Desktop/prog/xmod
+source $HOME/.bashrc 
+
+#wallpaper
+[ -d $HOME/.fehbg ] && sh $HOME/.fehbg & 
 
 #teclado ruim
-xmodmap $HOME/desktop/prog/xmod/tecladoruim
+[ -d $XMOD_DICT/tecladoruim ] && xmodmap $HOME/desktop/prog/xmod/tecladoruim
 
 #padrão 
-exo &
-qbittorrent &
-discord &
-anki &
-#japanese locale
-#. LANG=ja_JP.sjis 
+command -v exo 2>&1 > /dev/null && exo & 
+#command -v discord 2>&1 > /dev/null && discord &
+command -v qbittorent 2>&1 > /dev/null && qbittorent &
+#command -v anki 2>&1 > /dev/null && anki &
+
+
+#if command -v qbittorrent &> /dev/null ; then
+#    qbittorrent &
+#fi
+#if command -v anki &> /dev/null ; then
+#    anki &
+#fi
+#if command -v discord &> /dev/null ; then
+#    discord &
+#fi
 
 #desativar touchapad
 synclient TouchpadOff=1 &
 
 
-#LC_NUMERIC=pt_BR.UTF-8
-#LC_MONETARY=pt_BR.UTF-8
-#LC_PAPER=pt_BR.UTF-8
-#LC_NAME=pt_BR.UTF-8
-#LC_ADDRESS=pt_BR.UTF-8
-#LC_TELEPHONE=pt_BR.UTF-8
-#LC_MEASUREMENT=pt_BR.UTF-8
-#LC_IDENTIFICATION=pt_BR.UTF-8
-#LC_TIME=pt_BR.UTF-8
-#PAPERSIZE=a4
-#LANGUAGE=en_US
-#LANG=en_US.UTF-8
