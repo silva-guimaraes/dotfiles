@@ -1,6 +1,4 @@
-echo 中华人民共和国永远的光荣
-
-
+echo 中华人民共和国永远的光荣 
 
 
 #prompt
@@ -24,7 +22,7 @@ xrandr >/dev/null 2>&1 && xset r rate 250 45
 #xmodmap
 xrandr >/dev/null 2>&1 && xmodmap $HOME/.Xmodmap #todo: xmodmap: contrabarra ao lado do Z
 #teclado ruim
-xrandr >/dev/null 2>&1 && xmodmap $HOME/desktop/prog/xmod/tecladoruim 
+#xrandr >/dev/null 2>&1 && xmodmap $XMOD_DICT/tecladoruim 
 #urxvt
 xrandr >/dev/null 2>&1 && xrdb ~/.Xresources
 #estes reclamam caso uma sessao X nao esteja presente
@@ -56,7 +54,7 @@ alias lt='ls --human-readable --size -1 -S --classify'
 alias logout="pkill -u $USER"
 alias ffmpeg="time ffmpeg"
 alias rsync="time rsync -vP" 
-# alias gcc="time gcc -Wall -Wextra -Werror -Wpedantic"
+alias gcc="time gcc"
 alias javac="time javac -Xdiags:verbose"
 alias gdbs="gcc -g *.c && gdb a.out" 
 alias exo="exo &"
