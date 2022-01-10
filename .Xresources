@@ -11,10 +11,10 @@ URxvt.keysym.Control-Shift-V:     perl:pasta:paste
 ! Colorscheme
 !! special
 !!*.foreground: #93a1a1
-!*.foreground: #000000
 !
 !!*.background: #141c21
-*.background: #E5E5E5
+*.foreground: #ffffff
+*.background: #000000
 !
 !*.cursorColor: #afbfbf
 !
