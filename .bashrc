@@ -1,5 +1,5 @@
+#verificar se terminal possui suporte para unicode-8
 echo 中华人民共和国永远的光荣 
-
 
 #prompt
 red=$(tput setaf 1 && tput bold)
@@ -17,16 +17,12 @@ stty -ixon
 #???
 export TERM=xterm-256color 
 
-#teclado rate
-xrandr >/dev/null 2>&1 && xset r rate 250 45
-#xmodmap
-xrandr >/dev/null 2>&1 && xmodmap $HOME/.Xmodmap #todo: xmodmap: contrabarra ao lado do Z
-#teclado ruim
-#xrandr >/dev/null 2>&1 && xmodmap $XMOD_DICT/tecladoruim 
-#urxvt
-xrandr >/dev/null 2>&1 && xrdb ~/.Xresources
-#estes reclamam caso uma sessao X nao esteja presente
-#todo: uma condicional para todos estes 
+if xrandr >/dev/null 2>&1; then #caso sessao X nao esteja presente
+    xset r rate 250 45 #teclado rate
+    #xmodmap $XMOD_DICT/tecladoruim #teclado ruim
+    xmodmap $HOME/.Xmodmap  #todo: xmodmap: contrabarra ao lado do Z
+    xrdb ~/.Xresources #urxvt
+fi 
 
 
 PS1='\[$red\][ \u@\H \A] \W ¥\[$reset\] '
@@ -59,6 +55,7 @@ alias javac="time javac -Xdiags:verbose"
 alias gdbs="gcc -g *.c && gdb a.out" 
 alias exo="exo &"
 alias ssh="ssh -q -X"
+alias ssr="simplescreenrecorder"
 
 command -v anki >/dev/null 2>&1 && alias poweroff="pkill anki && poweroff"
 
