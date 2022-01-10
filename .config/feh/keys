@@ -15,7 +15,7 @@ scroll_left
 zoom_in
 zoom_out
 next_img
-prev_imk
+prev_img
 
 
 #binding
@@ -34,4 +34,3 @@ menu_down j
 menu_parent h
 menu_child l
 
-fullscreen f
