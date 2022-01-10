@@ -1,4 +1,4 @@
-"inicio
+"inicio 
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -12,10 +12,10 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 	Plugin 'VundleVim/Vundle.vim'
+	Plugin 'jiangmiao/auto-pairs'
 	Plugin 'vim-airline/vim-airline'
 	Plugin 'vim-airline/vim-airline-themes'
 	Plugin 'octol/vim-cpp-enhanced-highlight'
-	Plugin 'jiangmiao/auto-pairs'
 	"Plugin 'vim-syntastic/syntastic'
 	"Plugin 'https://github.com/ycm-core/YouCompleteMe'
 
@@ -42,9 +42,10 @@ filetype plugin indent on    " required
 
 
 "rice
-	let g:airline_theme='sol'
+	let g:airline_theme='dark'
+	"sol dark
 	syntax on					"syntaxe ligado 
-	colorscheme pablo				"esquema de cor
+	colorscheme ron				"esquema de cor
 	set background=light				"texto com contraste correto
 	"visual contraste
 	hi Visual term=reverse cterm=reverse 
@@ -137,8 +138,8 @@ filetype plugin indent on    " required
 
 "janelas
 	"nova janela
-		noremap ss :split<Return><C-w>
-		noremap sv :vsplit<Return><C-w> 
+		noremap ss :split<CR><C-w>
+		noremap sv :vsplit<CR><C-w> 
 	"mover para janelas
 		noremap sh <C-w>h
 		noremap sk <C-w>k
@@ -155,6 +156,7 @@ filetype plugin indent on    " required
 "rodar
 	"abrir Makefile 
 		noremap <F3> :tab new<CR>:e Makefile<CR>
+		"todo: buffer especifico
 	"make
 		noremap <F4> :write <CR> :!make<CR>
 	"make run	
