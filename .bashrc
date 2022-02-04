@@ -6,6 +6,7 @@ sh $HOME/.fehbg
 
 #prompt
 red=$(tput setaf 1 && tput bold)
+blue=$(tput setaf 4 && tput bold)
 reset=$(tput sgr 0)
 
 #cd sem precisar digitar cd
@@ -23,12 +24,15 @@ export TERM=xterm-256color
 if xrandr >/dev/null 2>&1; then #caso sessao X nao esteja presente
     xset r rate 250 45 #teclado rate
     #xmodmap $XMOD_DICT/tecladoruim #teclado ruim
-    xmodmap $HOME/.Xmodmap  #todo: xmodmap: contrabarra ao lado do Z
+    #xmodmap $HOME/.Xmodmap  #todo: xmodmap: contrabarra ao lado do Z
     xrdb ~/.Xresources #urxvt
 fi 
 
-
-PS1='\[$red\][ \u@\H \A] \W ¥\[$reset\] '
+if [ "$RANGER_LEVEL" > "1" ]; then 
+    PS1='\[$red\][ \u@\H \A] \W \[$blue\]R\[$reset\] '
+else
+    PS1='\[$red\][ \u@\H \A] \W ¥\[$reset\] '
+fi
 
 PATH=$PATH:$HOME/Desktop
 PATH=$PATH:$HOME/Desktop/prog/shell
