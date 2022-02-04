@@ -12,13 +12,14 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 	Plugin 'VundleVim/Vundle.vim'
+	Plugin 'https://github.com/ycm-core/YouCompleteMe'
 	Plugin 'jiangmiao/auto-pairs'
 	Plugin 'vim-airline/vim-airline'
 	Plugin 'vim-airline/vim-airline-themes'
+	Plugin 'tikhomirov/vim-glsl'
 	Plugin 'octol/vim-cpp-enhanced-highlight'
-	"Plugin 'vim-syntastic/syntastic'
-	"Plugin 'https://github.com/ycm-core/YouCompleteMe'
-
+	Plugin 'vim-syntastic/syntastic'
+	Plugin 'preservim/nerdtree'
 
 
 call vundle#end()            " required
@@ -46,7 +47,7 @@ filetype plugin indent on    " required
 	"sol dark
 	syntax on					"syntaxe ligado 
 	colorscheme ron				"esquema de cor
-	set background=light				"texto com contraste correto
+	set background=dark				"texto com contraste correto
 	"visual contraste
 	hi Visual term=reverse cterm=reverse 
 
@@ -75,14 +76,23 @@ filetype plugin indent on    " required
 	filetype indent on
 
 "syntastic/YCM
+"let g:ycm_error_symbol = '誤' 
 	"let g:syntastic_always_populate_loc_list = 1
 	"let g:syntastic_auto_loc_list = 1
 	"let g:syntastic_check_on_open = 1
-	"let g:syntastic_check_on_wq = 0
-	"let g:ycm_error_symbol = '誤' 
-	"let g:loaded_youcompleteme = 1
+	"let g:syntastic_check_on_wq = 0 
+	let g:ycm_semantic_triggers = {
+		\   'python': [ 're!\w{2}' ]
+		\ }
 
-"mappings -------------------------------------
+augroup remember_folds
+  autocmd!
+  autocmd BufWinLeave * mkview
+  autocmd BufWinEnter * silent! loadview
+augroup END
+
+"mappings
+"=================================================================================
 
 
 	"apagar resto da linha e editar
@@ -150,34 +160,52 @@ filetype plugin indent on    " required
 	"salvar
 		"noremap <C-s> :write<CR>
 		noremap sd :quit<CR>
-		noremap SF :q!<CR>
+		"noremap SF :q!<CR>
 
 
 "rodar
 	"abrir Makefile 
 		noremap <F3> :tab new<CR>:e Makefile<CR>
 		"todo: buffer especifico
-	"make
-		noremap <F4> :write <CR> :!make<CR>
-	"make run	
-		noremap <F5> :write<CR>:!clear && make run<CR>
+		
+	"usar esse make quando erros estiverem atrapalhando
+		command Make make! | cope
 
-		noremap <F6> :cope 12<CR>
+	"compilar aqruivo em C
+		command Cmake !gcc % && ./a.out 
 	"favor não por nenhum caractere depois de nenhum CR
-	"
-	"
-	inoremap <tab> <C-p>
-	inoremap <C-p> <tab>
-	noremap cp :.cc<CR>
-	command Make make! | cope
-	command Cmake !gcc % && ./a.out
-
-
-	noremap <F7> :if exists("g:syntax_on") <Bar>              
-	    	\   syntax off <Bar>                             
-	    	\ else <Bar>                                     
-	    	\   syntax enable <Bar>                                  
-	    	\ endif <CR>
+	
 
 
 
+	"toggle sintaxe
+	    noremap <F7> :if exists("g:syntax_on") <Bar>              
+		    \   syntax off <Bar>                             
+		    \ else <Bar>                                     
+		    \   syntax enable <Bar>                                  
+		    \ endif <CR>
+
+	"explorador de arquivo
+	    nnoremap <leader>n :NERDTreeFocus<CR> 
+	"colapsar funcao
+	    noremap <F8> va{zf
+
+
+"    Vim folding commands
+"    ---------------------------------
+"    zf#j creates a fold from the cursor down # lines.
+"    zf/ string creates a fold from the cursor to string .
+"    zj moves the cursor to the next fold.
+"    zk moves the cursor to the previous fold.
+"    za toggle a fold at the cursor.
+"    zo opens a fold at the cursor.
+"    zO opens all folds at the cursor.
+"    zc closes a fold under cursor. 
+"    zm increases the foldlevel by one.
+"    zM closes all open folds.
+"    zr decreases the foldlevel by one.
+"    zR decreases the foldlevel to zero -- all folds will be open.
+"    zd deletes the fold at the cursor.
+"    zE deletes all folds.
+"    [z move to start of open fold.
+"    ]z move to end of open fold.
