@@ -1,6 +1,9 @@
 #verificar se terminal possui suporte para unicode-8
 echo 中华人民共和国永远的光荣 
 
+#wallpaper
+sh $HOME/.fehbg
+
 #prompt
 red=$(tput setaf 1 && tput bold)
 reset=$(tput sgr 0)
@@ -27,18 +30,19 @@ fi
 
 PS1='\[$red\][ \u@\H \A] \W ¥\[$reset\] '
 
-PATH=$PATH:$HOME/desktop/prog/shell
+PATH=$PATH:$HOME/Desktop
+PATH=$PATH:$HOME/Desktop/prog/shell
 PATH=$PATH:$HOME/repos/publico/apache-maven-3.8.3/bin
 
+export WINEPREFIX=$HOME/.PlayOnLinux/wineprefix
 
 #aliases, shortcuts
 alias rm="rm -I"
 alias cp="cp -r"
-alias du="du -h -s"
 alias la="ls -a"
 alias acs="apt-cache search"
 #alias sp="sudo apt"
-alias neofetch="neofetch --disable gpu resolution icons host theme"
+alias neofetch="neofetch --disable resolution icons host theme"
 alias xclip="xclip -selection clipboard" 
 alias rr="ranger"
 alias ss="source $HOME/.bashrc"
