@@ -1,5 +1,5 @@
 #verificar se terminal possui suporte para unicode-8
-echo 中华人民共和国永远的光荣 
+echo 对中华人民共和国的永恒光荣  
 
 #wallpaper
 sh $HOME/.fehbg
@@ -21,14 +21,15 @@ stty -ixon
 #???
 export TERM=xterm-256color 
 
-if xrandr >/dev/null 2>&1; then #caso sessao X nao esteja presente
+#esses dependem de uma sessao xorg presente
+if xrandr >/dev/null 2>&1; then 
     xset r rate 250 45 #teclado rate
     #xmodmap $XMOD_DICT/tecladoruim #teclado ruim
     #xmodmap $HOME/.Xmodmap  #todo: xmodmap: contrabarra ao lado do Z
     xrdb ~/.Xresources #urxvt
 fi 
 
-if [ "$RANGER_LEVEL" > "1" ]; then 
+if [[ $RANGER_LEVEL -eq 1 ]]; then 
     PS1='\[$red\][ \u@\H \A] \W \[$blue\]R\[$reset\] '
 else
     PS1='\[$red\][ \u@\H \A] \W ¥\[$reset\] '
@@ -36,7 +37,6 @@ fi
 
 PATH=$PATH:$HOME/Desktop
 PATH=$PATH:$HOME/Desktop/prog/shell
-PATH=$PATH:$HOME/repos/publico/apache-maven-3.8.3/bin
 
 export WINEPREFIX=$HOME/.PlayOnLinux/wineprefix
 
@@ -64,6 +64,7 @@ alias gdbs="gcc -g *.c && gdb a.out"
 alias exo="exo &"
 alias ssh="ssh -q -X"
 alias ssr="simplescreenrecorder"
+alias :q="exit"
 
 command -v anki >/dev/null 2>&1 && alias poweroff="pkill anki && poweroff"
 
