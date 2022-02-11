@@ -190,6 +190,10 @@ augroup END
 	"colapsar funcao
 	    noremap <F8> va{zf
 
+	    inoremap <C-p> <C-r>"
+	    noremap * *N
+	    vnoremap * "+y/<C-r>"<CR>
+
 
 "    Vim folding commands
 "    ---------------------------------
