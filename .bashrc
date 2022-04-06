@@ -1,11 +1,12 @@
 #verificar se terminal possui suporte para unicode-8
-echo 对中华人民共和国的永恒光荣  
+echo 对中华人民共和国的永恒光荣
 
 #wallpaper
 sh $HOME/.fehbg
 
 #prompt
 red=$(tput setaf 1 && tput bold)
+green=$(tput setaf 10 && tput bold)
 blue=$(tput setaf 4 && tput bold)
 reset=$(tput sgr 0)
 
@@ -30,10 +31,13 @@ if xrandr >/dev/null 2>&1; then
 fi 
 
 if [[ $RANGER_LEVEL -eq 1 ]]; then 
-    PS1='\[$red\][ \u@\H \A] \W \[$blue\]R\[$reset\] '
+    PS1='\[$green\]\H: \w \[$blue\]r\[$reset\] '
 else
-    PS1='\[$red\][ \u@\H \A] \W ¥\[$reset\] '
+    PS1='\[$green\]\H: \w ¥\[$reset\] '
 fi
+
+    # PS1='\[$red\][ \u@\H \A] \W \[$blue\]R\[$reset\] '
+    # PS1='\[$red\][ \u@\H \A] \W ¥\[$reset\] '
 
 PATH=$PATH:$HOME/Desktop
 PATH=$PATH:$HOME/Desktop/prog/shell
@@ -45,13 +49,12 @@ alias rm="rm -I"
 alias cp="cp -r"
 alias la="ls -a"
 alias acs="apt-cache search"
-#alias sp="sudo apt"
-alias neofetch="neofetch --disable resolution icons host theme"
+alias neofetch="neofetch --ascii_distro Mint_old --disable resolution icons host theme"
 alias xclip="xclip -selection clipboard" 
 alias rr="ranger"
-alias ss="source $HOME/.bashrc"
+alias ss="time source $HOME/.bashrc"
 alias df="df -h" 
-alias yt="youtube-dl" 
+alias yt="youtube-dlp" 
 alias banddl="youtube-dl -o '%(autonumber)02d %(title)s.%(ext)s'"
 alias jpwine="LANG=ja_JP.sjis wine" 
 alias lt='ls --human-readable --size -1 -S --classify' 
@@ -60,11 +63,15 @@ alias ffmpeg="time ffmpeg"
 alias rsync="time rsync -vP" 
 alias gcc="time gcc"
 alias javac="time javac -Xdiags:verbose"
+alias racket="rlwrap racket"
+alias clisp="rlwrap clisp"
+alias sbcl="rlwrap sbcl"
 alias gdbs="gcc -g *.c && gdb a.out" 
 alias exo="exo &"
 alias ssh="ssh -q -X"
 alias ssr="simplescreenrecorder"
 alias :q="exit"
+alias mpv="mpv -v"
 
 command -v anki >/dev/null 2>&1 && alias poweroff="pkill anki && poweroff"
 
