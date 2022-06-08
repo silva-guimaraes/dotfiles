@@ -3,15 +3,15 @@ export XMOD_DICT=$HOME/Desktop/prog/xmod
 source $HOME/.bashrc 
 
 #wallpaper
-[ -d $HOME/.fehbg ] && sh $HOME/.fehbg & 
+[ -d $HOME/.fehbg ] && sh $HOME/.fehbg 
 
 #teclado ruim
 [ -d $XMOD_DICT/tecladoruim ] && xmodmap $HOME/desktop/prog/xmod/tecladoruim
 
 #padrão 
-command -v exo 2>&1 > /dev/null && exo & 
-#command -v discord 2>&1 > /dev/null && discord &
 command -v qbittorent 2>&1 > /dev/null && qbittorent &
+#command -v exo 2>&1 > /dev/null && exo & 
+#command -v discord 2>&1 > /dev/null && discord &
 #command -v anki 2>&1 > /dev/null && anki &
 
 
@@ -26,6 +26,4 @@ command -v qbittorent 2>&1 > /dev/null && qbittorent &
 #fi
 
 #desativar touchapad
-synclient TouchpadOff=1 &
-
-
+synclient TouchpadOff=1 & 

@@ -18,8 +18,9 @@ call vundle#begin()
 	Plugin 'vim-airline/vim-airline-themes'
 	Plugin 'tikhomirov/vim-glsl'
 	Plugin 'octol/vim-cpp-enhanced-highlight'
-	Plugin 'vim-syntastic/syntastic'
-	Plugin 'preservim/nerdtree'
+	"Plugin 'vim-syntastic/syntastic'
+	Plugin 'vim-python/python-syntax'
+	"Plugin 'preservim/nerdtree'
 
 
 call vundle#end()            " required
@@ -46,14 +47,15 @@ filetype plugin indent on    " required
 	let g:airline_theme='dark'
 	"sol dark
 	syntax on					"syntaxe ligado 
-	colorscheme ron				"esquema de cor
-	set background=dark				"texto com contraste correto
-	"visual contraste
-	hi Visual term=reverse cterm=reverse 
-
+	colorscheme ron					"esquema de cor
+	set background=dark				"texto com contraste correto 
 	set laststatus=2				"mostrar barra de status mesmo com apenas uma janela aberta
+	let g:python_highlight_all = 1			"python
+
 	"linha clara em baixo do curso
 	"hi cursorline cterm=none ctermbg=234 term=reverse	 
+	"contraste visual
+	hi Visual term=reverse cterm=reverse 
 
 
 "ultilidade
@@ -84,6 +86,7 @@ filetype plugin indent on    " required
 	let g:ycm_semantic_triggers = {
 		\   'python': [ 're!\w{2}' ]
 		\ }
+	set completeopt-=preview
 
 augroup remember_folds
   autocmd!
@@ -192,7 +195,15 @@ augroup END
 
 	    inoremap <C-p> <C-r>"
 	    noremap * *N
-	    vnoremap * "+y/<C-r>"<CR>
+	    vnoremap * "+y/<C-r>"<CR>N
+	    map g8 *maciw
+	    vmap g8 *maciw
+
+	    vnoremap G[ c[]<ESC>P
+	    vnoremap G( c()<ESC>P
+	    vnoremap G{ c{}<ESC>P
+
+	    vnoremap <C-a> c<C-a><esc>
 
 
 "    Vim folding commands
