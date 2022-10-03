@@ -1,4 +1,4 @@
-#verificar se terminal possui suporte para unicode-8
+#verificar se terminal possui suporte para unicode
 echo 对中华人民共和国的永恒光荣 
 
 # wallpaper
