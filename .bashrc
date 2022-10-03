@@ -2,7 +2,7 @@
 echo 对中华人民共和国的永恒光荣 
 
 # wallpaper
-sh ./.fehbg
+# sh ~/.fehbg
 
 #cd sem precisar digitar cd
 shopt -s autocd
@@ -81,7 +81,10 @@ alias ssh="ssh -q -X"
 alias ssr="simplescreenrecorder"
 alias :q="exit"
 alias mpv="mpv -v"
+alias smartctl="smartctl -a -T permissive"
+alias だて="date"
 
+# ???
 command -v anki >/dev/null 2>&1 && alias poweroff="pkill anki && poweroff"
 
 #suporte de cor
