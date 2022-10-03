@@ -1,14 +1,10 @@
 "inicio 
-
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
+call vundle#begin() 
 
 " let Vundle manage Vundle, required
 	Plugin 'VundleVim/Vundle.vim'
@@ -18,25 +14,10 @@ call vundle#begin()
 	Plugin 'vim-airline/vim-airline-themes'
 	Plugin 'tikhomirov/vim-glsl'
 	Plugin 'octol/vim-cpp-enhanced-highlight'
-	"Plugin 'vim-syntastic/syntastic'
 	Plugin 'vim-python/python-syntax'
-	"Plugin 'preservim/nerdtree'
-
 
 call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
+filetype plugin indent on    " required 
 
 "importante
 	set backspace=indent,eol,start    		"backspace normal
@@ -72,7 +53,7 @@ filetype plugin indent on    " required
 	set nospell
 	set spelllang=en_us,pt_br			"spellcheck linguas
 	set encoding=utf-8				"todos os carecteres
-	set shiftwidth=4				"quantos espaços para indentar 
+	set shiftwidth=2				"quantos espaços para indentar 
 	set nocindent
 	set smartindent
 	filetype indent on
@@ -87,6 +68,25 @@ filetype plugin indent on    " required
 		\   'python': [ 're!\w{2}' ]
 		\ }
 	set completeopt-=preview
+    "desligar ycm
+	let g:ycm_show_diagnostics_ui = 0
+    "habilitar ycm
+	function Toggle_ycm()
+	    if g:ycm_show_diagnostics_ui == 0
+		let g:ycm_auto_trigger = 1
+		let g:ycm_show_diagnostics_ui = 1
+		:YcmRestartServer
+		:e
+		:echo "YCM on"
+	    elseif g:ycm_show_diagnostics_ui == 1
+		let g:ycm_auto_trigger = 0
+		let g:ycm_show_diagnostics_ui = 0
+		:YcmRestartServer
+		:e
+		:echo "YCM off"
+	    endif
+	endfunction
+	map <F4> :call Toggle_ycm() <CR>
 
 augroup remember_folds
   autocmd!
@@ -109,9 +109,6 @@ augroup END
 	"pular um bloco
 		noremap { }
 		noremap } {
-	"selecionar proximo parentesis
-		noremap ( f(
-		noremap ) f)
 
 	"newline
 		noremap <CR> o<Esc>k 
@@ -135,8 +132,7 @@ augroup END
 
 
 	"pesquisar palavra em baixo do curso
-		noremap gm g*
-
+		noremap gm g* 
 
 "buffer
 	"salvar e ir para arquivo em baixo do cursor
@@ -205,22 +201,16 @@ augroup END
 
 	    vnoremap <C-a> c<C-a><esc>
 
+	    noremap tt :!urxvt &<CR><CR>
 
-"    Vim folding commands
-"    ---------------------------------
-"    zf#j creates a fold from the cursor down # lines.
-"    zf/ string creates a fold from the cursor to string .
-"    zj moves the cursor to the next fold.
-"    zk moves the cursor to the previous fold.
-"    za toggle a fold at the cursor.
-"    zo opens a fold at the cursor.
-"    zO opens all folds at the cursor.
-"    zc closes a fold under cursor. 
-"    zm increases the foldlevel by one.
-"    zM closes all open folds.
-"    zr decreases the foldlevel by one.
-"    zR decreases the foldlevel to zero -- all folds will be open.
-"    zd deletes the fold at the cursor.
-"    zE deletes all folds.
-"    [z move to start of open fold.
-"    ]z move to end of open fold.
+	"mover cursor pro parentesis final
+	    nmap ) va(<ESC><ESC>
+	"mover cursor pro parentesis inicial
+	    nmap ( va(o<ESC><ESC>
+
+	    "noremap )I )a
+	    "noremap )i )i 
+	    "noremap (a ()i
+	    "noremap (o va(<ESC><ESC>a<C-j>
+
+
