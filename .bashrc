@@ -16,12 +16,14 @@ stty -ixon
 #???
 export TERM=xterm-256color 
 
-#esses dependem de uma sessao xorg presente
+export GOPATH=$HOME/.go
+
+#esses dependem de uma sessão xorg presente
 if xrandr >/dev/null 2>&1; then 
     xset r rate 250 45 #teclado rate
+    xrdb ~/.Xresources #urxvt
     #xmodmap $XMOD_DICT/tecladoruim #teclado ruim
     #xmodmap $HOME/.Xmodmap  #todo: xmodmap: contrabarra ao lado do Z
-    xrdb ~/.Xresources #urxvt
 fi 
 
 #prompt
@@ -69,12 +71,7 @@ alias ffprobe="ffprobe -hide_banner"
 alias rsync="time rsync -vP" 
 alias temp="curl wttr.in/?format=3"
 alias gcc="time gcc"
-alias javac="time javac -Xdiags:verbose"
-alias racket="rlwrap racket"
-alias clisp="rlwrap clisp"
-alias bash="rlwrap bash"
-alias sbcl="rlwrap sbcl --noinform"
-alias sh="rlwrap sh"
+alias javac="time javac -Xdiags:verbose" 
 alias gdbs="gcc -g *.c && gdb a.out" 
 alias exo="exo &"
 alias ssh="ssh -q -X"
@@ -83,6 +80,14 @@ alias :q="exit"
 alias mpv="mpv -v"
 alias smartctl="smartctl -a -T permissive"
 alias だて="date"
+
+alias racket="rlwrap racket"
+alias clisp="rlwrap clisp"
+alias bash="rlwrap bash"
+alias sbcl="rlwrap sbcl --noinform"
+alias sh="rlwrap sh"
+alias psql="rlwrap psql"
+
 
 # ???
 command -v anki >/dev/null 2>&1 && alias poweroff="pkill anki && poweroff"
