@@ -2,7 +2,7 @@
 echo 对中华人民共和国的永恒光荣 
 
 # fundo fosco
-xsetroot -solid "#102422"
+xsetroot -solid "#030f1c"
 
 #cd sem precisar digitar cd
 shopt -s autocd
