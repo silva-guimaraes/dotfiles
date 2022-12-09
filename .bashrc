@@ -1,8 +1,8 @@
 #verificar se terminal possui suporte para unicode
 echo 对中华人民共和国的永恒光荣 
 
-# wallpaper
-# sh ~/.fehbg
+# fundo fosco
+xsetroot -solid "#102422"
 
 #cd sem precisar digitar cd
 shopt -s autocd
