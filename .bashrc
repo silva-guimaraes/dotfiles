@@ -77,7 +77,6 @@ alias exo="exo &"
 alias ssh="ssh -q -X"
 alias ssr="simplescreenrecorder"
 alias :q="exit"
-alias mpv="mpv -v"
 alias smartctl="smartctl -a -T permissive"
 alias だて="date"
 
