@@ -23,12 +23,12 @@
 ;(display-line-numbers-mode)
 ;(setq display-line-numbers 'relative)
 
-; remover barras de menu
+;; remover barras de menu
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
-; melpa 
+;; melpa
 (require 'package)
 (add-to-list 'package-archives
 	     '("melpa" . "https://melpa.org/packages/")
@@ -79,17 +79,18 @@
 
 (setq-default show-trailing-whitespace t)
 
-(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+;; (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
-(add-hook 'post-command-hook
-          (lambda ()
-            (let ((color (cond ((minibufferp)
-                                (cons (face-background 'mode-line)
-                                      (face-foreground 'mode-line)))
-                               ((evil-insert-state-p) '("#78007a" . "#ffffff"))
-                               ((evil-emacs-state-p)  '("#78007a" . "#ffffff"))
-                               ((buffer-modified-p)   '("#000000" . "#ffffff"))
-                               (t '("#666666" . "#ffffff")))))
-              (set-face-background 'mode-line (car color))
-              (set-face-foreground 'mode-line (cdr color)))))
+(defvar default-colors (cons (face-background 'mode-line) (face-foreground 'mode-line)))
+
+(defun mode-line-colors ()
+  (let ((color (cond ((minibufferp) default-colors)
+                     ((evil-insert-state-p) '("#000000" . "#ffffff"))
+                     ((evil-emacs-state-p)  '("#000000" . "#ffffff"))
+                     ((buffer-modified-p)   '("#78007a" . "#ffffff"))
+                     (t default-colors))))
+    (set-face-background 'mode-line (car color))
+    (set-face-foreground 'mode-line (cdr color))))
+
+(add-hook 'post-command-hook #'mode-line-colors)
 
