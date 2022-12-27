@@ -77,3 +77,19 @@
 (global-set-key (kbd "C-'") help-map)
 (global-set-key (kbd "C-h") 'delete-backward-char)
 
+(setq-default show-trailing-whitespace t)
+
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+
+(add-hook 'post-command-hook
+          (lambda ()
+            (let ((color (cond ((minibufferp)
+                                (cons (face-background 'mode-line)
+                                      (face-foreground 'mode-line)))
+                               ((evil-insert-state-p) '("#78007a" . "#ffffff"))
+                               ((evil-emacs-state-p)  '("#78007a" . "#ffffff"))
+                               ((buffer-modified-p)   '("#000000" . "#ffffff"))
+                               (t '("#666666" . "#ffffff")))))
+              (set-face-background 'mode-line (car color))
+              (set-face-foreground 'mode-line (cdr color)))))
+
