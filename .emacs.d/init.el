@@ -1,4 +1,7 @@
-; fak emac
+
+
+
+;; fak emac
 
 ;;;; cor
 
@@ -17,11 +20,11 @@
 (set-face-foreground 'highlight nil)
 
 ;; fonte
-(set-face-attribute 'default nil :font "Liberation Mono-14:antialias=1" :height 90)
+(set-face-attribute 'default nil :font "Fantasque Sans Mono:antialias=1" :height 96)
 
-; set relative line
-;(display-line-numbers-mode)
-;(setq display-line-numbers 'relative)
+;; set relative line
+(display-line-numbers-mode)
+(setq display-line-numbers 'relative)
 
 ;; remover barras de menu
 (menu-bar-mode -1)
@@ -64,9 +67,10 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (setq indent-line-function 'insert-tab)
+(setq tab-stop-list (number-sequence 4 200 4))
 
 ;; no wrap
-(toggle-truncate-lines)
+;; (toggle-truncate-lines)
 
 ;; diretório de backups
 (setq backup-directory-alist `(("." . "~/.saves")))
@@ -79,8 +83,11 @@
 
 (setq-default show-trailing-whitespace t)
 
-;; (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+;; set number
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+(add-hook 'slime-repl-mode 'display-line-numbers-mode)
 
+;; let não funciona? porque?
 (defvar default-colors (cons (face-background 'mode-line) (face-foreground 'mode-line)))
 
 (defun mode-line-colors ()
@@ -94,3 +101,38 @@
 
 (add-hook 'post-command-hook #'mode-line-colors)
 
+(add-hook 'go-mode-hook 'lsp-deferred)
+
+;; (require 'use-package)
+
+;; (use-package lsp-mode
+;; 	     :custom
+;; 	     (lsp-headerline-breadcrumb-enable t))
+
+;; (setq lsp-enable-links nil)
+
+(global-set-key (kbd "M-x") #'helm-M-x)
+(global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
+(global-set-key (kbd "C-x C-f") #'helm-find-files)
+(helm-mode 1)
+
+
+(defun remove-keybinding (kb)
+  (global-set-key (kbd kb) nil))
+
+(mapcar 'remove-keybinding '("ESC C-<backspace>"
+                            "ESC C-<delete>"
+                            "ESC C-<down>"
+                            "ESC C-<end>"
+                            "ESC C-<home>"
+                            "ESC C-<left>"
+                            "ESC C-<right>"
+                            "ESC C-<up>"
+                            "ESC <begin>"
+                            "ESC <end>"
+                            "ESC <f10> "
+                            "ESC <home>"
+                            "ESC <left>"
+                            "ESC <next>"
+                            "ESC <prior>"
+                            "ESC <right>"))
