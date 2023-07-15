@@ -1,6 +1,3 @@
-
-
-
 ;; fak emac
 
 ;;;; cor
@@ -9,18 +6,18 @@
 (set-language-environment "UTF-8")
 (setenv "LC_CTYPE" "en_US.UTF-8")
 ;; foreground
-(add-to-list 'default-frame-alist '(foreground-color . "#000000"))
+;; (add-to-list 'default-frame-alist '(foreground-color . "#000000"))
 ;; background
-(add-to-list 'default-frame-alist '(background-color . "#FFFFFF"))
+;; (add-to-list 'default-frame-alist '(background-color . "#FFFFFF"))
 ;; seleção de texto
-(set-face-attribute 'region nil :background "#6EFAFF")
+;; (set-face-attribute 'region nil :background "#6EFAFF")
 ;; linha do cursor
 (global-hl-line-mode 1)
-(set-face-background 'hl-line "#E8E8E8")
+;; (set-face-background 'hl-line "#E8E8E8")
 (set-face-foreground 'highlight nil)
 
 ;; fonte
-(set-face-attribute 'default nil :font "Fantasque Sans Mono:antialias=1" :height 96)
+(set-face-attribute 'default nil :font "Fantasque Sans Mono:antialias=1" :height 100)
 
 ;; set relative line
 (display-line-numbers-mode)
@@ -43,9 +40,11 @@
 
 ; C-u
 (setq evil-want-C-u-scroll t)
+(setq evil-want-keybinding nil)
 ; evil mode
 (require 'evil)
 (evil-mode 1)
+(evil-collection-init '(vterm dired))
 
 ; paredit
 (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
@@ -79,7 +78,7 @@
 (add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
 
 (global-set-key (kbd "C-'") help-map)
-(global-set-key (kbd "C-h") 'delete-backward-char)
+(global-set-key (kbd "C-h") 'delete-backward-char) ;; describe-function
 
 (setq-default show-trailing-whitespace t)
 
@@ -103,13 +102,18 @@
 
 (add-hook 'go-mode-hook 'lsp-deferred)
 
-;; (require 'use-package)
+(require 'use-package)
 
-;; (use-package lsp-mode
-;; 	     :custom
-;; 	     (lsp-headerline-breadcrumb-enable t))
+(use-package vterm :ensure t)
 
-;; (setq lsp-enable-links nil)
+(use-package lsp-mode
+	     ;; :custom
+	     ;; (lsp-headerline-breadcrumb-enable t)
+         )
+
+(setq lsp-enable-links nil)
+(setq lsp-ui-sideline-enable t)
+(setq lsp-ui-sideline-show-diagnostics t)
 
 (global-set-key (kbd "M-x") #'helm-M-x)
 (global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
@@ -117,22 +121,18 @@
 (helm-mode 1)
 
 
-(defun remove-keybinding (kb)
-  (global-set-key (kbd kb) nil))
+(global-set-key (kbd "M-x") #'helm-M-x)
 
-(mapcar 'remove-keybinding '("ESC C-<backspace>"
-                            "ESC C-<delete>"
-                            "ESC C-<down>"
-                            "ESC C-<end>"
-                            "ESC C-<home>"
-                            "ESC C-<left>"
-                            "ESC C-<right>"
-                            "ESC C-<up>"
-                            "ESC <begin>"
-                            "ESC <end>"
-                            "ESC <f10> "
-                            "ESC <home>"
-                            "ESC <left>"
-                            "ESC <next>"
-                            "ESC <prior>"
-                            "ESC <right>"))
+;; Treat all themes as safe
+(setq custom-safe-themes t)
+(load-theme 'obsidian)
+;; (load-theme 'moe-dark)
+
+(add-hook 'minibuffer-setup-hook
+          (lambda ()
+            (local-set-key (kbd "C-w") #'backward-kill-word
+                           ;; (kbd "C-l")
+                           )
+            (local-set-key (kbd "C-h") (kbd "<backspace>"))))
+
+(display-time)

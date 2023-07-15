@@ -1,5 +1,7 @@
+
 URxvt*scrollBar: false     
-URxvt.perl-ext-common: ...,tabbed,...  
+!! *font: *-fixed-*-*-*-10-*
+!! URxvt.perl-ext-common: ...,tabbed,...  
 URxvt.tabbed.tabbar-fg: -2
 URxvt.tabbed.tabbar-bg: -1
 URxvt.tabbed.tab-fg: -2
@@ -7,6 +9,9 @@ URxvt.tabbed.tab-bg: -1
 URxvt.keysym.C-M-c: builtin-string:
 URxvt.keysym.C-M-v: builtin-string:
 URxvt.keysym.Control-Shift-V:     perl:pasta:paste
+
+!!URxvt.font: -misc-fixed-medium-r-normal--15-140-75-75-c-90-iso8859-1
+URxvt.keysym.M-v: perl:clipboard:paste
 
 ! Colorscheme
 !! special

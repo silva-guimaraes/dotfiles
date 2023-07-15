@@ -5,12 +5,27 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
-	use {
-		'nvim-telescope/telescope.nvim', tag = '0.1.1',
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
+    }
+    use 'tpope/vim-rsi'
+    use {
+        "windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup {} end
+    }
+    -- telescope
+    use {
+        'nvim-telescope/telescope.nvim', tag = '0.1.1',
 		-- or                            , branch = '0.1.x',
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
+    -- treesitter
 	use ( 'nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+    -- colorscheme
+    use { "bluz71/vim-nightfly-colors", as = "nightfly" }
     -- LSP
 	use {
 		'VonHeikemen/lsp-zero.nvim',
@@ -34,4 +49,15 @@ return require('packer').startup(function(use)
 			{'rafamadriz/friendly-snippets'}, -- Optional
 		}
 	}
+    use {
+        "folke/trouble.nvim",
+        requires = "nvim-tree/nvim-web-devicons",
+        config = function()
+            require("trouble").setup {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            }
+        end
+    }
 end)
