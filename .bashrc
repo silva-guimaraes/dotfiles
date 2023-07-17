@@ -36,8 +36,8 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 export BROWSER=google-chrome-stable
 
 # scripts em shell
-if [ -d $HOME/Desktop/prog/shell/pasu ]; then
-    PATH=$PATH:$HOME/Desktop/prog/shell/pasu
+if [ -d $HOME/shell/ ]; then
+    PATH=$PATH:$HOME/shell/
 fi
 
 #esses dependem de uma sessão xorg presente

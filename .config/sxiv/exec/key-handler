@@ -28,7 +28,10 @@ do
     case "$1" in
         "c")      
             cat $file | xclip -selection clipboard -target image/png && \
-                notify-send 'sxiv' "copied to clipboarad $file";;
+                notify-send 'sxiv' "image copied to clipboarad $file";;
+        "s")      
+            echo $file | tr '\n' '\0' | xclip -selection clipboard && \
+                notify-send 'sxiv' "path copied to clipboarad $file";;
     esac
 done
 
