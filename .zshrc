@@ -1,6 +1,14 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# abrir terminal dentro de uma sessão tmux
+if [[ $(command -v tmux) ]] && [[ -z $TMUX ]] && [[ $TERM != "screen" ]] && [[ $- == *i* ]]; then
+     exec tmux new-session \; choose-tree
+fi
+
+# fundo fosco
+xsetroot -solid "#030f1c"
+
 # Path to your oh-my-zsh installation.
 export WINEPREFIX=$HOME/.winevn
 export ZSH="$HOME/.oh-my-zsh"
