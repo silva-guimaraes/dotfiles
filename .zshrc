@@ -17,6 +17,9 @@ export GOPATH=$HOME/.go
 export PATH=$PATH:$GOPATH/bin/
 export _JAVA_AWT_WM_NONREPARENTING=1
 export BROWSER=google-chrome-stable
+export DISABLE_AUTO_UPDATE=true
+export VISUAL="nvim --noplugin"
+export EDITOR="$VISUAL"
 
 # scripts em shell
 if [ -d $HOME/shell/ ]; then
