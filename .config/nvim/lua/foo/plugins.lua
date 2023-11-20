@@ -31,6 +31,24 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
+local treesitter_parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+treesitter_parser_config.templ = {
+  install_info = {
+    url = "https://github.com/vrischmann/tree-sitter-templ.git",
+    files = {"src/parser.c", "src/scanner.c"},
+    branch = "master",
+  },
+};
+vim.treesitter.language.register('templ', 'templ')
+treesitter_parser_config.d2 = {
+  install_info = {
+    url = 'https://git.pleshevski.ru/pleshevskiy/tree-sitter-d2',
+    revision = 'main',
+    files = { 'src/parser.c', 'src/scanner.cc' },
+  },
+  filetype = 'd2',
+};
+-- vim.treesitter.language.register('d2', 'd2')
 
 -- lsp
 require("mason").setup {

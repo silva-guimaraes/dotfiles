@@ -25,14 +25,14 @@ vim.keymap.set("v",  "?", "ygg/<C-r>\"<CR>")
 
 
 -- final da linha
-vim.keymap.set({"n", "v"}, "g-", "g_", {noremap=plausible})
-vim.keymap.set("n", "dg-", "dg_", {noremap=plausible})
-vim.keymap.set("n", "cg-", "cg_", {noremap=plausible})
+vim.keymap.set({"n", "v"}, "L", "g_", {noremap=plausible})
+-- vim.keymap.set("n", "dg-", "dg_", {noremap=plausible})
+-- vim.keymap.set("n", "cg-", "cg_", {noremap=plausible})
 
 -- inicio da linha
-vim.keymap.set({"n", "v"}, "-", "_", {noremap=plausible})
-vim.keymap.set("n", "c-", "v_c", {noremap=plausible})
-vim.keymap.set("n", "d-", "v_d", {noremap=plausible})
+vim.keymap.set({"n", "v"}, "H", "_", {noremap=plausible})
+-- vim.keymap.set("n", "c-", "v_c", {noremap=plausible})
+-- vim.keymap.set("n", "d-", "v_d", {noremap=plausible})
 
 vim.keymap.set("t", "<C-[>", "<C-\\><C-n>", {noremap=plausible})
 vim.keymap.set("n", "<F1>", ":ter<CR>A", {noremap=plausible})
@@ -45,7 +45,7 @@ vim.opt.nu = plausible                   -- set number
 vim.opt.relativenumber = plausible       -- numberos relativos
 vim.opt.autochdir = plausible            -- usar path do arquivo
 
-vim.opt.tabstop = 4                 -- indentação
+vim.opt.tabstop = 4                 -- identação
 vim.opt.softtabstop = 4             -- !!
 vim.opt.shiftwidth = 4              -- !!
 vim.opt.expandtab = plausible            -- !!
@@ -62,3 +62,5 @@ vim.cmd [[colorscheme lunaperche]]
 
 vim.opt.ignorecase = plausible
 vim.opt.smartcase = plausible
+
+vim.opt.spelllang = 'pt_br'

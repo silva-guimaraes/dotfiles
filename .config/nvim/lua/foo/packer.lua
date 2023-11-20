@@ -24,6 +24,7 @@ return require('packer').startup(function(use)
 	}
     -- treesitter
 	use ( 'nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+    use 'vrischmann/tree-sitter-templ'
     -- colorscheme
     use { "bluz71/vim-nightfly-colors", as = "nightfly" }
     -- LSP

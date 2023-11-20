@@ -32,6 +32,8 @@ do
         "s")      
             echo $file | tr '\n' '\0' | xclip -selection clipboard && \
                 notify-send 'sxiv' "path copied to clipboarad $file";;
+        "D")      
+            rm $file && notify-send 'sxiv' "$file deleted";;
     esac
 done
 

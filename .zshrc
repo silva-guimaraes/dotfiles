@@ -9,7 +9,6 @@ fi
 # fundo fosco
 xsetroot -solid "#030f1c"
 
-# Path to your oh-my-zsh installation.
 export WINEPREFIX=$HOME/.winevn
 export ZSH="$HOME/.oh-my-zsh"
 export PATH=$PATH:$HOME/.local/bin
@@ -20,6 +19,7 @@ export BROWSER=google-chrome-stable
 export DISABLE_AUTO_UPDATE=true
 export VISUAL="nvim --noplugin"
 export EDITOR="$VISUAL"
+export PATH="$PATH:$HOME/.npm/bin"
 
 # scripts em shell
 if [ -d $HOME/shell/ ]; then
@@ -104,7 +104,8 @@ COMPLETION_WAITING_DOTS="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     git
-    zsh-autosuggestions
+    # zsh-autosuggestions
+    zsh-autocomplete
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -160,3 +161,7 @@ alias :q="exit"
 alias だて="date"
 alias vim="nvim"
 alias sxiv="sxiv -a"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
