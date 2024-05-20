@@ -20,6 +20,8 @@ export DISABLE_AUTO_UPDATE=true
 export VISUAL="nvim --noplugin"
 export EDITOR="$VISUAL"
 export PATH="$PATH:$HOME/.npm/bin"
+export PATH=$PATH:~/.dotnet/tools/
+export PATH=$PATH:~/.ghcup/bin/
 
 # scripts em shell
 if [ -d $HOME/shell/ ]; then
@@ -140,11 +142,10 @@ source $ZSH/oh-my-zsh.sh
 alias rm="rm -I"
 alias cp="cp -r"
 alias la="ls -a"
-alias du="du -h"
-alias lswc="ls && ls | wc -l"
+alias du="du --apparent-size"
 alias neofetch="neofetch --disable resolution icons host theme"
 alias clip="xclip -selection clipboard" 
-alias so="time source $HOME/.bashrc"
+alias so="source $HOME/.zshrc"
 alias df="df -h" 
 alias jpwine="LC_ALL=ja_JP.sjis wine" 
 alias lt='ls --human-readable --size -1 -S --classify' 
@@ -154,13 +155,12 @@ alias ffprobe="ffprobe -hide_banner"
 alias rsync="time rsync -vP" 
 alias temp='curl "https://wttr.in/?format=3"'
 alias gcc="time gcc"
-alias javac="time javac -Xdiags:verbose" 
 alias ssh="ssh -qXYC"
 alias :q="exit"
 # alias smartctl="smartctl -a -T permissive"
-alias だて="date"
 alias vim="nvim"
-alias sxiv="sxiv -a"
+alias nsxiv="nsxiv -a"
+alias tsxiv="ls -t | nsxiv -a - 2>/dev/null"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

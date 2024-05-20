@@ -1,4 +1,7 @@
 
+export VISUAL="nvim --noplugin"
+export EDITOR="$VISUAL"
+
 if [[ $FIRST_TERM -eq 1 ]]; then 
     #verificar se fonte e terminal possuem suporte para unicode
     echo 对中华人民共和国的永恒光荣 
