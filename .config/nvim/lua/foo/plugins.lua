@@ -1,18 +1,30 @@
--- configurações de plugins
---
---
+------------------------------
+-- configurações de plugins --
+------------------------------
 
--- telescope
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
-vim.keymap.set('n', '<leader>pg', builtin.git_files, {})
-vim.keymap.set('n', '<leader>pp', builtin.live_grep, {})
-vim.keymap.set('n', '<C-[>', "<cmd>Telescope lsp_references<cr>", {noremap=true})
-vim.keymap.set("n", "<leader>ps", function ()
-    builtin.grep_string({ search = vim.fn.input("grep: ") });
-end)
+-- todo: separar isso tudo em arquivos.
 
--- nvim-treesitter
+
+---------------
+-- telescope --
+---------------
+
+-- local builtin = require('telescope.builtin')
+-- vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
+-- vim.keymap.set('n', '<leader>pg', builtin.git_files, {})
+-- vim.keymap.set('n', '<leader>pp', builtin.live_grep, {})
+-- vim.keymap.set('n', '<C-[>', "<cmd>Telescope lsp_references<cr>", {noremap=true})
+-- vim.keymap.set("n", "<leader>ps", function ()
+--     builtin.grep_string({ search = vim.fn.input("grep: ") });
+-- end)
+
+
+
+
+
+---------------------
+-- nvim-treesitter --
+---------------------
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all" (the four listed parsers should always be installed)
   ensure_installed = {
@@ -63,28 +75,47 @@ vim.filetype.add({
         templ = "templ",
     },
 })
-----------------------------------------------------------
 
 
--- lsp
-require'lspconfig'.templ.setup {}
+
+
+
+----------
+-- lsp ---
+----------
+
+local lspconfig = require('lspconfig')
+
+lspconfig.templ.setup {}
+lspconfig.html.setup { filetypes = { "html", "templ", "cshtml" }, }
+lspconfig.htmx.setup{ filetypes = { "html", "templ" }, }
+
 
 require("mason").setup {
     log_level = vim.log.levels.DEBUG
 }
 local lsp = require('lsp-zero')
 lsp.preset('recommended')
--- (Optional) Configure lua language server for neovim
 lsp.nvim_workspace()
 lsp.setup()
 
--- trouble
+
+
+
+
+----------
+-- misc --
+----------
+
+-- trouble. diz o que deu de errado com o lsp.
 vim.keymap.set('n', '<leader>t', '<cmd>TroubleToggle<CR>', {})
 
--- comment.nvim
-vim.keymap.set('v', '<M-;>', 'gc', {remap=true})
+
+-- comment.nvim. comenta o seu código.
+vim.keymap.set('v', '<M-;>', 'gc', {remap=true}) -- usei emacs por um tempinho e lá eles usavam essa keybind pra comentar
 vim.keymap.set('n', '<M-;>', 'gcc', {remap=true})
 
+-- explorador de arquivos
 require('oil').setup({
     default_file_explorer = true,
     delete_to_trash = true,
@@ -97,3 +128,8 @@ require('oil').setup({
         ['gs'] = 'actions.change_sort',
     },
 })
+
+-- lualine
+-- lua << END
+require('lualine').setup()
+-- END

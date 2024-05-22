@@ -17,11 +17,11 @@ return require('packer').startup(function(use)
         config = function() require("nvim-autopairs").setup {} end
     }
     -- telescope
-    use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.1',
-		-- or                            , branch = '0.1.x',
-		requires = { {'nvim-lua/plenary.nvim'} }
-	}
+ --    use {
+ --        'nvim-telescope/telescope.nvim', tag = '0.1.1',
+	-- 	-- or                            , branch = '0.1.x',
+	-- 	requires = { {'nvim-lua/plenary.nvim'} }
+	-- }
     -- treesitter
 	use ( 'nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
     use 'vrischmann/tree-sitter-templ'
@@ -67,5 +67,10 @@ return require('packer').startup(function(use)
             require("oil").setup()
         end,
         requires = 'nvim-tree/nvim-web-devicons',
+    }
+    use 'marko-cerovac/material.nvim'
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
 end)

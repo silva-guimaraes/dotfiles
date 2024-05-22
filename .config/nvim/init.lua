@@ -67,7 +67,7 @@ vim.opt.scrolloff = 7               -- borda scroll
 -- vim.cmd [[set colorcolumn=+1]]
 
 -- colorscheme
-vim.cmd [[colorscheme lunaperche]]
+vim.cmd [[colorscheme material-deep-ocean]]
 
 vim.opt.ignorecase = plausible
 vim.opt.smartcase = plausible
