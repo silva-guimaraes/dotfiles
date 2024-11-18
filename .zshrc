@@ -22,6 +22,9 @@ export EDITOR="$VISUAL"
 export PATH="$PATH:$HOME/.npm/bin"
 export PATH=$PATH:~/.dotnet/tools/
 export PATH=$PATH:~/.ghcup/bin/
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
 
 # scripts em shell
 if [ -d $HOME/shell/ ]; then
@@ -41,6 +44,7 @@ fi
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
+# ZSH_THEME="agnoster"
 ZSH_THEME="nicoulaj"
 # ZSH_THEME="random"
 
@@ -138,10 +142,51 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+
+function ytmpv {
+    LINK=$(xclip -selection clipboard -o)
+    mpv "$LINK" > /dev/null 2&>1 &
+}
+
+function forkmpv {
+    mpv "$@" > /dev/null 2&>1 &
+}
+
+function forkmpvloop {
+    for link in "$@"; do
+        echo $link
+        forkmpv "$link" --loop=yes
+    done
+}
+
+alias fml="forkmpvloop"
+
+function fizzbuzz {
+    if [[ -z $1 ]]; then
+        till=30
+    else
+        till=$1
+    fi
+    for i in {1..$till}; do
+        local i3=$(( $i % 3 ))
+        local i5=$(( $i % 5 ))
+        if [[ $i3 == 0 ]] && [[ $i5 == 0 ]]; then
+            echo fizzbuzz
+        elif [[ $i3 == 0 ]]; then
+            echo fizz
+        elif [[ $i5 == 0 ]]; then
+            echo buzz
+        else
+            echo $i
+        fi
+    done
+}
+
 #aliases, shortcuts
 alias rm="rm -I"
 alias cp="cp -r"
 alias la="ls -a"
+alias l="ls -lh"
 alias du="du --apparent-size"
 alias neofetch="neofetch --disable resolution icons host theme"
 alias clip="xclip -selection clipboard" 
@@ -165,3 +210,7 @@ alias tsxiv="ls -t | nsxiv -a - 2>/dev/null"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)

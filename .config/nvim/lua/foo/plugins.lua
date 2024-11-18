@@ -4,24 +4,6 @@
 
 -- todo: separar isso tudo em arquivos.
 
-
----------------
--- telescope --
----------------
-
--- local builtin = require('telescope.builtin')
--- vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
--- vim.keymap.set('n', '<leader>pg', builtin.git_files, {})
--- vim.keymap.set('n', '<leader>pp', builtin.live_grep, {})
--- vim.keymap.set('n', '<C-[>', "<cmd>Telescope lsp_references<cr>", {noremap=true})
--- vim.keymap.set("n", "<leader>ps", function ()
---     builtin.grep_string({ search = vim.fn.input("grep: ") });
--- end)
-
-
-
-
-
 ---------------------
 -- nvim-treesitter --
 ---------------------
@@ -85,10 +67,22 @@ vim.filetype.add({
 ----------
 
 local lspconfig = require('lspconfig')
-
+lspconfig.tsserver.setup{
+    settings = {
+        implicitProjectConfiguration = {
+            checkJs = true
+        },
+    }
+}
 lspconfig.templ.setup {}
-lspconfig.html.setup { filetypes = { "html", "templ", "cshtml" }, }
+lspconfig.html.setup { filetypes = { "html", "templ", "cshtml", "javascript"}, }
 lspconfig.htmx.setup{ filetypes = { "html", "templ" }, }
+
+
+vim.keymap.set("n", "<leader>lr", function ()
+    vim.cmd [[ LspRestart ]]
+    print("Lsp restarted!")
+end, {noremap=true})
 
 
 require("mason").setup {
@@ -108,11 +102,18 @@ lsp.setup()
 ----------
 
 -- trouble. diz o que deu de errado com o lsp.
+require('trouble').setup {
+    multiline = true,
+    -- mode = "document_diagnostics",
+}
 vim.keymap.set('n', '<leader>t', '<cmd>TroubleToggle<CR>', {})
 
 
 -- comment.nvim. comenta o seu código.
-vim.keymap.set('v', '<M-;>', 'gc', {remap=true}) -- usei emacs por um tempinho e lá eles usavam essa keybind pra comentar
+require('Comment.ft').set('templ', {'//%s', '/*%s*/'})
+
+-- usei emacs por um tempinho e lá eles usavam essa keybind pra comentar
+vim.keymap.set('v', '<M-;>', 'gc', {remap=true})
 vim.keymap.set('n', '<M-;>', 'gcc', {remap=true})
 
 -- explorador de arquivos
@@ -126,10 +127,46 @@ require('oil').setup({
         ['g.'] = 'actions.toggle_hidden',
         ['gx'] = 'actions.open_external',
         ['gs'] = 'actions.change_sort',
+        ["S"] = "actions.open_terminal",
     },
 })
 
--- lualine
--- lua << END
+-- barra de statu
 require('lualine').setup()
--- END
+
+-- -- wildmenu melhorado
+-- local wilder = require 'wilder'
+-- wilder.setup {
+--     modes = {':', '/', '?'}
+-- }
+
+-- wilder.set_option('renderer', wilder.popupmenu_renderer(
+--   wilder.popupmenu_palette_theme({
+--     -- 'single', 'double', 'rounded' or 'solid'
+--     -- can also be a list of 8 characters, see :h wilder#popupmenu_palette_theme() for more details
+--     border = 'rounded',
+--     max_height = '75%',      -- max height of the palette
+--     min_height = 0,          -- set to the same as 'max_height' for a fixed height window
+--     prompt_position = 'top', -- 'top' or 'bottom' to set the location of the prompt
+--     -- set to 1 to reverse the order of the list, use in combination with 'prompt_position'
+--     reverse = 0,
+--   })
+-- ))
+
+require'smartcolumn'.setup({
+    disabled_filetypes = { "help", "text", "markdown", "NvimTree", "lazy",
+        "mason", "help", "checkhealth", "lspinfo", "noice", "Trouble",
+        "fish", "zsh", "html", "templ"},
+    colorcolumn = "115"
+})
+
+
+-- require('slimv').setup()
+vim.g.slimv_swank_cmd = "!ros -e '(ql:quickload :swank) (swank:create-server)' wait &"
+vim.g.slimv_lisp = 'ros run'
+vim.g.slimv_impl = 'sbcl'
+
+-- require('example').setup {
+--     msg = 'foobar',
+-- }
+

@@ -1,0 +1,28 @@
+
+
+# import = [
+#     "~/.config/alacritty/themes/themes/alabaster.toml"
+# ]
+
+[font]
+size = 6.2
+
+[font.bold]
+family = "monospace"
+style = "Bold"
+
+[font.bold_italic]
+family = "monospace"
+style = "Bold Italic"
+
+[font.italic]
+family = "monospace"
+style = "Italic"
+
+[font.normal]
+family = "monospace"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = -4
