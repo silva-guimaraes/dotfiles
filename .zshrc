@@ -183,6 +183,7 @@ function fizzbuzz {
 }
 
 #aliases, shortcuts
+alias ls="ls -l --color=auto --group-directories-first"
 alias rm="rm -I"
 alias cp="cp -r"
 alias la="ls -a"
@@ -205,7 +206,9 @@ alias :q="exit"
 # alias smartctl="smartctl -a -T permissive"
 alias vim="nvim"
 alias nsxiv="nsxiv -a"
-alias tsxiv="ls -t | nsxiv -a - 2>/dev/null"
+alias tsxiv="/usr/bin/ls -t | nsxiv -a - 2>/dev/null"
+alias h2d="printf '%d\n'"
+alias d2h="printf '%02x\n'"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
