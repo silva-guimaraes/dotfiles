@@ -66,7 +66,12 @@ vim.keymap.set('t', '<C-[>', '<C-\\><C-n>', {noremap=plausible})
 -- abre terminal
 vim.keymap.set('n', '<F1>', '<C-w>v<C-w>l:ter<CR>A', {noremap=plausible})
 
+-- define diretório atual do shell para diretório do atual arquivo
+-- vim.keymap.set('n', '<leader>qq', function ()
+--     local path = vim.fn.expand("%:p:h")
+-- end, {noremap=plausible})
 
+-- não deveria estar aqui
 local ls = require('luasnip')
 -- vim.keymap.set({'i'}, '<C-K>', function() ls.expand() end, {silent = true})
 vim.keymap.set({'i', 's'}, '<C-L>', function() ls.jump( 1) end, {silent = true})
@@ -110,7 +115,7 @@ vim.opt.scrolloff = 7               -- borda scroll
 -- vim.cmd [[set colorcolumn=+1]]
 
 -- colorscheme
-vim.cmd [[colorscheme material-deep-ocean]]
+vim.cmd [[colorscheme material-lighter]]
 
 vim.opt.ignorecase = plausible
 vim.opt.smartcase = plausible
