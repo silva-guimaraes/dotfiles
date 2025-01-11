@@ -7,7 +7,7 @@ if [[ $(command -v tmux) ]] && [[ -z $TMUX ]] && [[ $TERM != "screen" ]] && [[ $
 fi
 
 # fundo fosco
-xsetroot -solid "#030f1c"
+# xsetroot -solid "#030f1c"
 
 export WINEPREFIX=$HOME/.winevn
 export ZSH="$HOME/.oh-my-zsh"
@@ -43,8 +43,6 @@ fi
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="robbyrussell"
-# ZSH_THEME="agnoster"
 ZSH_THEME="nicoulaj"
 # ZSH_THEME="random"
 
@@ -109,11 +107,12 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    git
+    # git
     # zsh-autosuggestions
-    zsh-autocomplete
+    # zsh-autocomplete
 )
 
+# source $HOME/.oh-my-zsh/themes/nicoulaj.zsh-theme
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -182,6 +181,33 @@ function fizzbuzz {
     done
 }
 
+function fvim {
+    WALKER_ROOT=""
+    if [[ -z $1 ]]; then
+        WALKER_ROOT=$HOME
+    else
+        WALKER_ROOT=$1
+    fi
+
+    WALKER_SKIP=".PlayOnLinux,.winevn,.wine,.cache,seed"    
+
+    FOUND=$(fzf --bind=ctrl-j:accept        \
+        --walker-root=$WALKER_ROOT   \
+        --multi                      \
+        --layout=reverse             \
+        --walker-skip="$WALKER_SKIP" \
+        --tmux=center                \
+        --border=double              \
+        --border-label="open in vim" \
+        --preview='head -$LINES {}'  \
+        --preview-label=preview)
+
+    if [[ -f $FOUND ]]; then
+        cd $(dirname $FOUND)
+        nvim "$FOUND"
+    fi
+}
+
 #aliases, shortcuts
 alias ls="ls -l --color=auto --group-directories-first"
 alias rm="rm -I"
@@ -216,4 +242,4 @@ export NVM_DIR="$HOME/.nvm"
 
 
 # Load Angular CLI autocompletion.
-source <(ng completion script)
+# source <(ng completion script)
