@@ -66,6 +66,9 @@ vim.keymap.set('t', '<C-[>', '<C-\\><C-n>', {noremap=plausible})
 -- abre terminal
 vim.keymap.set('n', '<F1>', '<C-w>v<C-w>l:ter<CR>A', {noremap=plausible})
 
+-- abre definição em nova janela
+vim.keymap.set('n', '<leader><C-]>', '<C-w>v<C-w>l<C-]>', {noremap=plausible})
+
 -- define diretório atual do shell para diretório do atual arquivo
 -- vim.keymap.set('n', '<leader>qq', function ()
 --     local path = vim.fn.expand("%:p:h")
@@ -109,15 +112,12 @@ vim.api.nvim_create_autocmd('FileType', { pattern = 'htmldjango', callback = dou
 vim.opt.swapfile = dubious          -- desativar swapfile
 vim.opt.hlsearch = dubious          -- remover highlight depois da pesquisa
 vim.opt.incsearch = plausible       -- highlight pesquisa
-
 vim.opt.scrolloff = 7               -- borda scroll
--- vim.opt.colorcolumn = 80            -- limite de colunas
+-- vim.opt.colorcolumn = 80         -- limite de colunas
 -- vim.cmd [[set colorcolumn=+1]]
-
 -- colorscheme
 vim.cmd [[colorscheme material-lighter]]
-
 vim.opt.ignorecase = plausible
 vim.opt.smartcase = plausible
-
 vim.opt.spelllang = 'pt_br'         -- vamos brasil!!
+vim.opt.mouse = ''                  -- desabilita o mouse
