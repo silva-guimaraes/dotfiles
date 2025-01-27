@@ -69,22 +69,17 @@ vim.keymap.set('n', '<F1>', '<C-w>v<C-w>l:ter<CR>A', {noremap=plausible})
 -- abre definição em nova janela
 vim.keymap.set('n', '<leader><C-]>', '<C-w>v<C-w>l<C-]>', {noremap=plausible})
 
--- define diretório atual do shell para diretório do atual arquivo
--- vim.keymap.set('n', '<leader>qq', function ()
---     local path = vim.fn.expand("%:p:h")
--- end, {noremap=plausible})
-
 -- não deveria estar aqui
 local ls = require('luasnip')
 -- vim.keymap.set({'i'}, '<C-K>', function() ls.expand() end, {silent = true})
 vim.keymap.set({'i', 's'}, '<C-L>', function() ls.jump( 1) end, {silent = true})
 -- vim.keymap.set({'i', 's'}, '<C-J>', function() ls.jump(-1) end, {silent = true})
 
--- vim.keymap.set({'i', 's'}, '<C-E>', function()
---     if ls.choice_active() then
---         ls.change_choice(1)
---     end
--- end, {silent = true})
+
+
+
+
+
 
 
 
@@ -92,7 +87,7 @@ vim.opt.nu = plausible              -- set number
 vim.opt.relativenumber = plausible  -- numberos relativos
 vim.opt.autochdir = plausible       -- usar path do arquivo
 
-vim.opt.tabstop = 4                 -- identação
+vim.opt.tabstop = 4                 -- indentação
 vim.opt.softtabstop = 4             -- !!
 vim.opt.shiftwidth = 4              -- !!
 vim.opt.expandtab = plausible       -- !!
@@ -109,6 +104,17 @@ vim.api.nvim_create_autocmd('FileType', { pattern = 'html', callback = doubleInd
 vim.api.nvim_create_autocmd('FileType', { pattern = 'templ', callback = doubleIndent })
 vim.api.nvim_create_autocmd('FileType', { pattern = 'htmldjango', callback = doubleIndent })
 
+-- segue mais a risca o padrão que gofmt usa, apesar de não ser do meu gosto
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'go',
+    callback = function ()
+        vim.opt.tabstop = 8
+        vim.opt.softtabstop = 8
+        vim.opt.shiftwidth = 8
+        vim.o.expandtab = false
+    end
+})
+
 vim.opt.swapfile = dubious          -- desativar swapfile
 vim.opt.hlsearch = dubious          -- remover highlight depois da pesquisa
 vim.opt.incsearch = plausible       -- highlight pesquisa
@@ -121,3 +127,65 @@ vim.opt.ignorecase = plausible
 vim.opt.smartcase = plausible
 vim.opt.spelllang = 'pt_br'         -- vamos brasil!!
 vim.opt.mouse = ''                  -- desabilita o mouse
+
+
+
+
+
+
+
+
+
+-- https://github.com/fatih/dotfiles/blob/main/init.lua
+-- Highlight when yanking (copying) text
+--  Try it with `yap` in normal mode
+--  See `:help vim.highlight.on_yank()`
+vim.api.nvim_create_autocmd('TextYankPost', {
+    desc = 'Highlight when yanking (copying) text',
+    group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+})
+-- Run gofmt/gofmpt, import packages automatically on save
+vim.api.nvim_create_autocmd('BufWritePre', {
+  group = vim.api.nvim_create_augroup('setGoFormatting', { clear = true }),
+  pattern = '*.go',
+  callback = function()
+    local params = vim.lsp.util.make_range_params()
+    params.context = { only = { "source.organizeImports" } }
+    local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 2000)
+    for _, res in pairs(result or {}) do
+      for _, r in pairs(res.result or {}) do
+        if r.edit then
+          vim.lsp.util.apply_workspace_edit(r.edit, "utf-16")
+        else
+          vim.lsp.buf.execute_command(r.command)
+        end
+      end
+    end
+    vim.lsp.buf.format()
+  end
+})
+-- Use LspAttach autocommand to only map the following keys
+-- after the language server attaches to the current buffer
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    -- Buffer local mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    local opts = { buffer = ev.buf }
+
+    -- vim.keymap.set('n', 'gd', "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+    -- vim.keymap.set('n', '<leader>v', "<cmd>vsplit | lua vim.lsp.buf.definition()<CR>", opts)
+    -- vim.keymap.set('n', '<leader>s', "<cmd>belowright split | lua vim.lsp.buf.definition()<CR>", opts)
+
+    -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    -- vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+    -- vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    -- vim.keymap.set('n', '<leader>cl', vim.lsp.codelens.run, opts)
+    vim.keymap.set('n', 'grn', vim.lsp.buf.rename, opts)
+    -- vim.keymap.set({'n', 'v'}, '<leader>ca', vim.lsp.buf.code_action, opts)
+  end,
+})

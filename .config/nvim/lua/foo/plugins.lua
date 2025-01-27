@@ -67,13 +67,13 @@ vim.filetype.add({
 ----------
 
 local lspconfig = require('lspconfig')
-lspconfig.tsserver.setup{
-    settings = {
-        implicitProjectConfiguration = {
-            checkJs = true
-        },
-    }
-}
+-- lspconfig.ts_ls.setup{
+--     settings = {
+--         implicitProjectConfiguration = {
+--             checkJs = true
+--         },
+--     }
+-- }
 lspconfig.templ.setup {}
 lspconfig.html.setup { filetypes = { "html", "templ", "cshtml", "javascript"}, }
 lspconfig.htmx.setup{ filetypes = { "html", "templ" }, }
@@ -106,7 +106,9 @@ require('trouble').setup {
     multiline = true,
     -- mode = "document_diagnostics",
 }
-vim.keymap.set('n', '<leader>t', '<cmd>TroubleToggle<CR>', {})
+-- meu irmão em Cristo, eu não compreendo porque mudar a API completamente.
+-- vim.keymap.set('n', '<leader>t', '<cmd>TroubleToggle<CR>', {})
+vim.keymap.set('n', '<leader>t', '<cmd>Trouble diagnostics toggle<CR>', {})
 
 
 -- comment.nvim. comenta o seu código.
@@ -131,7 +133,7 @@ require('oil').setup({
     },
 })
 
--- barra de statu
+-- barra de status
 require('lualine').setup()
 
 -- -- wildmenu melhorado
@@ -162,11 +164,18 @@ require'smartcolumn'.setup({
 
 
 -- require('slimv').setup()
-vim.g.slimv_swank_cmd = "!ros -e '(ql:quickload :swank) (swank:create-server)' wait &"
-vim.g.slimv_lisp = 'ros run'
-vim.g.slimv_impl = 'sbcl'
+-- vim.g.slimv_swank_cmd = "!ros -e '(ql:quickload :swank) (swank:create-server)' wait &"
+-- vim.g.slimv_lisp = 'ros run'
+-- vim.g.slimv_impl = 'sbcl'
 
 -- require('example').setup {
 --     msg = 'foobar',
 -- }
+
+
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
+vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
+vim.keymap.set('n', '<leader>fr', builtin.lsp_references, { desc = 'LSP References' })
 
