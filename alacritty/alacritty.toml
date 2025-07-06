@@ -1,7 +1,7 @@
 
 
-import = [
-    "~/.config/alacritty/themes/themes/ayu_light.toml"
+general.import = [
+    "~/.config/alacritty/themes/themes/xterm.toml"
 ]
 
 [font]

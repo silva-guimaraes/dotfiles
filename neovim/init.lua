@@ -64,10 +64,16 @@ vim.keymap.set('n', '<C-J>', 'o<Esc>', {remap=plausible})
 vim.keymap.set('t', '<C-[>', '<C-\\><C-n>', {noremap=plausible})
 
 -- abre terminal
-vim.keymap.set('n', '<F1>', '<C-w>v<C-w>l:ter<CR>A', {noremap=plausible})
+vim.keymap.set('n', '<F1>', ':term<CR>A', {noremap=plausible})
 
 -- abre definição em nova janela
-vim.keymap.set('n', '<leader><C-]>', '<C-w>v<C-w>l<C-]>', {noremap=plausible})
+-- vim.keymap.set('n', '<leader><C-]>', '<C-w>v<C-w>l<C-]>', {noremap=plausible})
+
+vim.keymap.set('n', '<C-w><C-v>', ':vsplit<CR><C-w>l')
+vim.keymap.set('n', '<C-w><C-n>', ':split<CR>')
+
+-- segue para a implementação de uma interface ou lista todas as disponíveis
+vim.keymap.set('n', '<M-]>', vim.lsp.buf.implementation)
 
 -- não deveria estar aqui
 local ls = require('luasnip')
@@ -103,6 +109,14 @@ vim.api.nvim_create_autocmd('FileType', { pattern = 'javascript', callback = dou
 vim.api.nvim_create_autocmd('FileType', { pattern = 'html', callback = doubleIndent })
 vim.api.nvim_create_autocmd('FileType', { pattern = 'templ', callback = doubleIndent })
 vim.api.nvim_create_autocmd('FileType', { pattern = 'htmldjango', callback = doubleIndent })
+vim.api.nvim_create_autocmd('FileType', { pattern = 'ocaml', callback = function ()
+    doubleIndent()
+    vim.cmd [[ set rtp^="~/.opam/default/share/ocp-indent/vim" ]]
+end })
+
+vim.api.nvim_create_autocmd('FileType', { pattern = 'gitcommit', callback = function ()
+    vim.cmd [[ set spell ]]
+end })
 
 -- segue mais a risca o padrão que gofmt usa, apesar de não ser do meu gosto
 vim.api.nvim_create_autocmd('FileType', {
@@ -122,7 +136,7 @@ vim.opt.scrolloff = 7               -- borda scroll
 -- vim.opt.colorcolumn = 80         -- limite de colunas
 -- vim.cmd [[set colorcolumn=+1]]
 -- colorscheme
-vim.cmd [[colorscheme material-lighter]]
+vim.cmd [[colorscheme material-deep-ocean]]
 vim.opt.ignorecase = plausible
 vim.opt.smartcase = plausible
 vim.opt.spelllang = 'pt_br'         -- vamos brasil!!
@@ -189,3 +203,4 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- vim.keymap.set({'n', 'v'}, '<leader>ca', vim.lsp.buf.code_action, opts)
   end,
 })
+

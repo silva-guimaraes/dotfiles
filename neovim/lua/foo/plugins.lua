@@ -7,35 +7,35 @@
 ---------------------
 -- nvim-treesitter --
 ---------------------
-require'nvim-treesitter.configs'.setup {
-  -- A list of parser names, or "all" (the four listed parsers should always be installed)
-  ensure_installed = {
+require 'nvim-treesitter.configs'.setup {
+    -- A list of parser names, or "all" (the four listed parsers should always be installed)
+    ensure_installed = {
         "c", "lua", "vim", "go", "python", "javascript", "html", "css"
         --[[ , "help" ]]
     },
-  -- Install parsers synchronously (only applied to `ensure_installed`)
-  sync_install = false,
-  -- Automatically install missing parsers when entering buffer
-  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-  auto_install = true,
-  highlight = {
-    -- `false` will disable the whole extension
-    enable = true,
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
-  },
-  indent = {
-      enable = true
-  }
+    -- Install parsers synchronously (only applied to `ensure_installed`)
+    sync_install = false,
+    -- Automatically install missing parsers when entering buffer
+    -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+    auto_install = true,
+    highlight = {
+        -- `false` will disable the whole extension
+        enable = true,
+        -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+        -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+        -- Using this option may slow down your editor, and you may see some duplicate highlights.
+        -- Instead of true it can also be a list of languages
+        additional_vim_regex_highlighting = false,
+    },
+    indent = {
+        enable = true
+    }
 }
 local treesitter_parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 treesitter_parser_config.templ = {
     install_info = {
         url = "https://github.com/vrischmann/tree-sitter-templ.git",
-        files = {"src/parser.c", "src/scanner.c"},
+        files = { "src/parser.c", "src/scanner.c" },
         branch = "master",
     },
 }
@@ -43,12 +43,12 @@ treesitter_parser_config.templ = {
 vim.treesitter.language.register("templ", "templ")
 
 treesitter_parser_config.d2 = {
-  install_info = {
-    url = 'https://git.pleshevski.ru/pleshevskiy/tree-sitter-d2',
-    revision = 'main',
-    files = { 'src/parser.c', 'src/scanner.cc' },
-  },
-  filetype = 'd2',
+    install_info = {
+        url = 'https://git.pleshevski.ru/pleshevskiy/tree-sitter-d2',
+        revision = 'main',
+        files = { 'src/parser.c', 'src/scanner.cc' },
+    },
+    filetype = 'd2',
 };
 vim.treesitter.language.register('d2', 'd2')
 
@@ -75,14 +75,15 @@ local lspconfig = require('lspconfig')
 --     }
 -- }
 lspconfig.templ.setup {}
-lspconfig.html.setup { filetypes = { "html", "templ", "cshtml", "javascript"}, }
-lspconfig.htmx.setup{ filetypes = { "html", "templ" }, }
+lspconfig.html.setup { filetypes = { "html", "templ", "cshtml", "javascript" }, }
+lspconfig.htmx.setup { filetypes = { "html", "templ" }, }
 
-
-vim.keymap.set("n", "<leader>lr", function ()
+vim.keymap.set("n", "<leader>lr", function()
     vim.cmd [[ LspRestart ]]
     print("Lsp restarted!")
-end, {noremap=true})
+end, { noremap = true })
+
+vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
 
 
 require("mason").setup {
@@ -92,6 +93,15 @@ local lsp = require('lsp-zero')
 lsp.preset('recommended')
 lsp.nvim_workspace()
 lsp.setup()
+
+-- Usar a versão do lsp gerenciado pelo opam
+vim.lsp.config['ocamllsp'] = {
+  cmd = { 'ocamllsp' },
+  filetypes = { 'ocaml' },
+  root_markers = { 'dune-project', 'dune' },
+}
+vim.lsp.enable('ocamllsp')
+
 
 
 
@@ -112,14 +122,21 @@ vim.keymap.set('n', '<leader>t', '<cmd>Trouble diagnostics toggle<CR>', {})
 
 
 -- comment.nvim. comenta o seu código.
-require('Comment.ft').set('templ', {'//%s', '/*%s*/'})
+require('Comment.ft').set('templ', { '//%s', '/*%s*/' })
 
 -- usei emacs por um tempinho e lá eles usavam essa keybind pra comentar
-vim.keymap.set('v', '<M-;>', 'gc', {remap=true})
-vim.keymap.set('n', '<M-;>', 'gcc', {remap=true})
+vim.keymap.set('v', '<M-;>', 'gc', { remap = true })
+vim.keymap.set('n', '<M-;>', 'gcc', { remap = true })
 
 -- explorador de arquivos
+-- local oil_actions = require('oil.actions')
 require('oil').setup({
+    columns = {
+        "icon",
+        "permissions",
+        "size",
+        "mtime",
+    },
     default_file_explorer = true,
     delete_to_trash = true,
     keymaps = {
@@ -127,9 +144,15 @@ require('oil').setup({
         ['l'] = 'actions.select',
         ['<C-j>'] = 'actions.select',
         ['g.'] = 'actions.toggle_hidden',
-        ['gx'] = 'actions.open_external',
         ['gs'] = 'actions.change_sort',
         ["S"] = "actions.open_terminal",
+        ["ss"] = 'actions.open_cmdline',
+        ["?"] = 'actions.show_help',
+        -- ['yy'] = 'actions.yank_entry',
+        ['gx'] = 'actions.open_external',
+    },
+    view_options = {
+        show_hidden = true,
     },
 })
 
@@ -155,10 +178,10 @@ require('lualine').setup()
 --   })
 -- ))
 
-require'smartcolumn'.setup({
+require 'smartcolumn'.setup({
     disabled_filetypes = { "help", "text", "markdown", "NvimTree", "lazy",
         "mason", "help", "checkhealth", "lspinfo", "noice", "Trouble",
-        "fish", "zsh", "html", "templ"},
+        "fish", "zsh", "html", "templ" },
     colorcolumn = "115"
 })
 
@@ -179,3 +202,29 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live gr
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fr', builtin.lsp_references, { desc = 'LSP References' })
 
+
+
+
+local cfg = {
+    floating_window_off_x = 5, -- adjust float windows x position.
+    hint_prefix = "📍 ",
+    -- adjust float windows y position. e.g. set to -2 can make floating window move up 2 lines
+    floating_window_off_y = function()
+        local linenr = vim.api.nvim_win_get_cursor(0)[1] -- buf line number
+        local pumheight = vim.o.pumheight
+        local winline = vim.fn.winline() -- line number in the window
+        local winheight = vim.fn.winheight(0)
+
+        -- window top
+        if winline - 1 < pumheight then
+            return pumheight
+        end
+
+        -- window bottom
+        if winheight - winline < pumheight then
+            return -pumheight
+        end
+        return 0
+    end,
+}
+require "lsp_signature".setup(cfg)

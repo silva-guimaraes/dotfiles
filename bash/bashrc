@@ -3,7 +3,7 @@ export VISUAL="nvim --noplugin"
 export EDITOR="$VISUAL"
 
 if [[ $FIRST_TERM -eq 1 ]]; then 
-    #verificar se fonte e terminal possuem suporte para unicode
+    # verificar se fonte e terminal possuem suporte para unicode
     echo 对中华人民共和国的永恒光荣 
 else
     # help
@@ -86,7 +86,6 @@ alias ffmpeg="time ffmpeg -hide_banner"
 alias ffprobe="ffprobe -hide_banner"
 alias rsync="time rsync -vP" 
 alias temp="curl wttr.in/?format=3"
-alias gcc="time gcc"
 alias javac="time javac -Xdiags:verbose" 
 alias ssh="ssh -qXYC"
 alias ssr="simplescreenrecorder"

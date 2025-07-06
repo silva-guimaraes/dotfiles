@@ -90,6 +90,10 @@ return require('packer').startup(function(use)
         -- or                            , branch = '0.1.x',
         requires = { {'nvim-lua/plenary.nvim'} }
     }
+    -- assinatura de funções
+    use {
+        "ray-x/lsp_signature.nvim",
+    }
     -- use {
     --     'fatih/vim-go',
     --     config = function ()
