@@ -2,7 +2,7 @@
 -- configurações de plugins --
 ------------------------------
 
--- todo: separar isso tudo em arquivos.
+-- todo: separar em arquivos.
 
 ---------------------
 -- nvim-treesitter --
@@ -93,6 +93,7 @@ local lsp = require('lsp-zero')
 lsp.preset('recommended')
 lsp.nvim_workspace()
 lsp.setup()
+
 
 if vim.fn.has('nvim-0.11.0') == 1 then
     -- Usar a versão do lsp gerenciado pelo opam
@@ -203,7 +204,6 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find f
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fr', builtin.lsp_references, { desc = 'LSP References' })
-
 
 
 

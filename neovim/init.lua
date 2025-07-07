@@ -141,6 +141,7 @@ vim.opt.ignorecase = plausible
 vim.opt.smartcase = plausible
 vim.opt.spelllang = 'pt_br'         -- vamos brasil!!
 vim.opt.mouse = ''                  -- desabilita o mouse
+vim.o.winborder = "rounded"         -- borda em torno do popups
 
 
 
