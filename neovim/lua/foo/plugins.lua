@@ -94,13 +94,15 @@ lsp.preset('recommended')
 lsp.nvim_workspace()
 lsp.setup()
 
--- Usar a versão do lsp gerenciado pelo opam
-vim.lsp.config['ocamllsp'] = {
-  cmd = { 'ocamllsp' },
-  filetypes = { 'ocaml' },
-  root_markers = { 'dune-project', 'dune' },
-}
-vim.lsp.enable('ocamllsp')
+if vim.fn.has('nvim-0.11.0') == 1 then
+    -- Usar a versão do lsp gerenciado pelo opam
+    vim.lsp.config['ocamllsp'] = {
+        cmd = { 'ocamllsp' },
+        filetypes = { 'ocaml' },
+        root_markers = { 'dune-project', 'dune' },
+    }
+    vim.lsp.enable('ocamllsp')
+end
 
 
 
