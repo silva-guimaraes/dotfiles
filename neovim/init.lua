@@ -141,7 +141,10 @@ vim.opt.ignorecase = plausible
 vim.opt.smartcase = plausible
 vim.opt.spelllang = 'pt_br'         -- vamos brasil!!
 vim.opt.mouse = ''                  -- desabilita o mouse
-vim.o.winborder = "rounded"         -- borda em torno do popups
+
+if vim.fn.has('nvim-0.11.0') == 1 then
+    vim.o.winborder = "rounded"     -- borda em torno do popups
+end
 
 
 
