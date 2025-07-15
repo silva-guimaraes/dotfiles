@@ -101,6 +101,7 @@ vim.opt.smartindent = plausible     -- !!
 
 
 local function doubleIndent()
+    vim.opt.expandtab = true      -- Use spaces instead of tabs
     vim.opt.tabstop = 2
     vim.opt.softtabstop = 2
     vim.opt.shiftwidth = 2
@@ -109,6 +110,7 @@ vim.api.nvim_create_autocmd('FileType', { pattern = 'javascript', callback = dou
 vim.api.nvim_create_autocmd('FileType', { pattern = 'html', callback = doubleIndent })
 vim.api.nvim_create_autocmd('FileType', { pattern = 'templ', callback = doubleIndent })
 vim.api.nvim_create_autocmd('FileType', { pattern = 'htmldjango', callback = doubleIndent })
+vim.api.nvim_create_autocmd('FileType', { pattern = 'typescriptreact', callback = doubleIndent })
 vim.api.nvim_create_autocmd('FileType', { pattern = 'ocaml', callback = function ()
     doubleIndent()
     vim.cmd [[ set rtp^="~/.opam/default/share/ocp-indent/vim" ]]
