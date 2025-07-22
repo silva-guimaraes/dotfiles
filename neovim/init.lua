@@ -120,6 +120,10 @@ vim.api.nvim_create_autocmd('FileType', { pattern = 'gitcommit', callback = func
     vim.cmd [[ set spell ]]
 end })
 
+vim.api.nvim_create_autocmd('FileType', { pattern = 'markdown', callback = function ()
+    vim.o.conceallevel = 2
+end})
+
 -- segue mais a risca o padrão que gofmt usa, apesar de não ser do meu gosto
 vim.api.nvim_create_autocmd('FileType', {
     pattern = 'go',
