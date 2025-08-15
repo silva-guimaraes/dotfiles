@@ -98,6 +98,7 @@ vim.opt.softtabstop = 4             -- !!
 vim.opt.shiftwidth = 4              -- !!
 vim.opt.expandtab = plausible       -- !!
 vim.opt.smartindent = plausible     -- !!
+vim.o.cursorline = true
 
 
 local function doubleIndent()
@@ -117,11 +118,12 @@ vim.api.nvim_create_autocmd('FileType', { pattern = 'ocaml', callback = function
 end })
 
 vim.api.nvim_create_autocmd('FileType', { pattern = 'gitcommit', callback = function ()
-    vim.cmd [[ set spell ]]
+    vim.o.spell = true
 end })
 
 vim.api.nvim_create_autocmd('FileType', { pattern = 'markdown', callback = function ()
     vim.o.conceallevel = 2
+    vim.o.wrap = false
 end})
 
 -- segue mais a risca o padrão que gofmt usa, apesar de não ser do meu gosto
