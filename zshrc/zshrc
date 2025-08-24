@@ -195,7 +195,7 @@ function fvim {
 }
 
 #aliases, shortcuts
-alias ls="ls -l --color=auto --group-directories-first"
+alias ls="ls -h -l --color=auto --group-directories-first"
 alias rm="rm -I"
 alias cp="cp -r"
 alias la="ls -a"
