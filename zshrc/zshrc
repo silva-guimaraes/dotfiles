@@ -194,6 +194,14 @@ function fvim {
     fi
 }
 
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
 #aliases, shortcuts
 alias ls="ls -h -l --color=auto --group-directories-first"
 alias rm="rm -I"
