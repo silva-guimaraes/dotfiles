@@ -27,11 +27,15 @@ do
     echo $file
     case "$1" in
         "c")      
-            cat $file | xclip -selection clipboard -target image/png && \
+            cat "$file" | xclip -selection clipboard -target image/png && \
                 notify-send 'sxiv' "image copied to clipboarad $file";;
         "s")      
-            echo $file | tr '\n' '\0' | xclip -selection clipboard && \
+            echo "$file" | tr '\n' '\0' | xclip -selection clipboard && \
                 notify-send 'sxiv' "path copied to clipboarad $file";;
+        "S")      
+            REAL=`realpath "$file"`
+             echo "$REAL"| tr '\n' '\0' | xclip -selection clipboard && \
+                notify-send 'sxiv' "path copied to clipboarad '$REAL'";;
         "D")      
             rm $file && notify-send 'sxiv' "$file deleted";;
     esac
