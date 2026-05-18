@@ -18,6 +18,8 @@ export EDITOR="$VISUAL"
 export PATH="$PATH:$HOME/.npm/bin"
 export PATH=$PATH:~/.dotnet/tools/
 export PATH=$PATH:~/.ghcup/bin/
+export PATH=$PATH:~/.cargo/bin
+export PATH="$PNPM_HOME:$PATH"
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
@@ -130,17 +132,13 @@ source $ZSH/oh-my-zsh.sh
 
 function ytmpv {
     LINK=$(xclip -selection clipboard -o)
-    mpv "$LINK" > /dev/null 2&>1 &
-}
-
-function forkmpv {
-    mpv "$@" 2&> /dev/null &
+    mpv "$LINK" > /dev/null 2>&1 &
 }
 
 function forkmpvloop {
     for link in "$@"; do
         echo $link
-        forkmpv "$link" --loop=yes
+        mpv "$link" --loop=yes &> /dev/null &
     done
 }
 
@@ -175,7 +173,7 @@ function fvim {
         WALKER_ROOT=$1
     fi
 
-    WALKER_SKIP=".PlayOnLinux,.winevn,.wine,.cache,seed"    
+    WALKER_SKIP=".PlayOnLinux,.winevn,.wine,.cache,seed,node_modules,venv,.venv,.git,.nix-defexpr,.wine64"    
 
     FOUND=$(fzf --bind=ctrl-j:accept        \
         --walker-root=$WALKER_ROOT   \
@@ -189,11 +187,37 @@ function fvim {
         --preview-label=preview)
 
     if [[ -f $FOUND ]]; then
-        cd $(dirname $FOUND)
         nvim "$FOUND"
     fi
 }
 
+function cdf {
+    WALKER_ROOT=""
+    if [[ -z $1 ]]; then
+        WALKER_ROOT=$HOME
+    else
+        WALKER_ROOT=$1
+    fi
+
+    WALKER_SKIP=".PlayOnLinux,.winevn,.wine,.cache,seed,node_modules,venv,.venv,.git,.nix-defexpr,.wine64"    
+
+    FOUND=$(fzf --bind=ctrl-j:accept \
+        --walker="dir,hidden"        \
+        --walker-root=$WALKER_ROOT   \
+        --multi                      \
+        --layout=reverse             \
+        --walker-skip="$WALKER_SKIP" \
+        --tmux=center                \
+        --border=double              \
+        --border-label="open in vim" \
+        --preview='head -$LINES {}'  \
+        --preview-label=preview)
+
+    if [[ -d $FOUND ]]; then
+        echo "cd $FOUND"
+        cd "$FOUND"
+    fi
+}
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	command yazi "$@" --cwd-file="$tmp"
@@ -213,6 +237,7 @@ alias neofetch="neofetch --disable resolution icons host theme"
 alias clip="xclip -selection clipboard" 
 alias so="source $HOME/.zshrc"
 alias df="df -h" 
+
 alias jpwine="LC_ALL=ja_JP.sjis wine" 
 alias lt='ls --human-readable --size -1 -S --classify' 
 alias logout="pkill -u $USER"
@@ -248,3 +273,11 @@ export NVM_DIR="$HOME/.nvm"
 # END opam configuration
 
 if [ -e /home/xi/.nix-profile/etc/profile.d/nix.sh ]; then . /home/xi/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+# pnpm
+export PNPM_HOME="/home/xi/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
