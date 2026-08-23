@@ -5,5 +5,5 @@ all:
       ansible_connection: local
   vars:
     # Dita se precisamos instalar pacotes com o pacman. Não por padrão.
-    # Isso torna todas as roles agnóticas quanto à distribuição linux.
+    # Isso torna todas as roles agnósticas quanto à distribuição linux.
     pacman_install: false
