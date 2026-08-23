@@ -1,6 +1,8 @@
 ---
 - name: main
   hosts: localhost
+  vars_files:
+    - secrets.yml
   roles:
     - zsh
     - nvim
@@ -9,3 +11,5 @@
     - tmux
     - nsxiv
     - xmodmap
+    - nas
+    - keepassxc

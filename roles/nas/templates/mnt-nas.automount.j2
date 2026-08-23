@@ -1,0 +1,9 @@
+[Unit]
+Description=Automount NAS share
+
+[Automount]
+Where=/mnt/nas
+TimeoutIdleSec=300
+
+[Install]
+WantedBy=multi-user.target

@@ -11,7 +11,7 @@ git submodule update --init --recursive
 ansible-playbook main.yml
 ```
 ## Créditos
-Majoritariamente inspirado em [https://github.com/dezeroku/arch_ansible](https://github.com/dezeroku/arch_ansible).
+Inspirado em [dezeroku/arch_ansible](https://github.com/dezeroku/arch_ansible).
 
 Até pouco tempo seguia a mesma filosofia que outros repositórios de ter todos os arquivos de configuração com
 base na `$HOME` do usuário como worktree principal, mas não estava contente com a organização pois são poucos os

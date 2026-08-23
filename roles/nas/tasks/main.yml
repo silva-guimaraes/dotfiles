@@ -1,0 +1,24 @@
+---
+- name: copy template
+  become: true
+  when: (nas_addr is defined) and (nas_password is defined)
+  block:
+    - name: copy unit files
+      ansible.builtin.template:
+        src: "{{ item }}.j2"
+        dest: "/etc/systemd/system/{{ item }}"
+        owner: root
+        group: root
+        mode: 0644
+      loop:
+        - mnt-nas.automount
+        - mnt-nas.mount
+      notify: restart mnt-nas
+    - name: copy cred file
+      ansible.builtin.template:
+        src: "cifs-nas.creds.j2"
+        dest: "/etc/cifs-nas.creds"
+        owner: root
+        group: root
+        mode: 0600
+      notify: restart mnt-nas

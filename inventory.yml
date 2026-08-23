@@ -7,3 +7,5 @@ all:
     # Dita se precisamos instalar pacotes com o pacman. Não por padrão.
     # Isso torna todas as roles agnósticas quanto à distribuição linux.
     pacman_install: false
+    # Endereço do NAS
+    nas_addr: nas.internal

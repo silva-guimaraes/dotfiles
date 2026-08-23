@@ -1,0 +1,9 @@
+[Unit]
+Description=NAS share
+
+[Mount]
+What=//{{ nas_addr }}/test
+Where=/mnt/nas
+Type=cifs
+Options=credentials=/etc/cifs-nas.creds,uid=1000,gid=1000,vers=3.1.1,iocharset=utf8,_netdev,file_mode=0644,dir_mode=0755,cache=loose,actimeo=60,nostrictsync
+TimeoutSec=30
