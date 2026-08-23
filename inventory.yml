@@ -4,8 +4,11 @@ all:
     localhost:
       ansible_connection: local
   vars:
-    # Dita se precisamos instalar pacotes com o pacman. Não por padrão.
+    # Dita se precisamos instalar pacotes com o pacman.
     # Isso torna todas as roles agnósticas quanto à distribuição linux.
     pacman_install: false
+    # Se programas compilados e instalados com make precisam rodar.
+    make_install: false
     # Endereço do NAS
     nas_addr: nas.internal
+    enable_nas: false

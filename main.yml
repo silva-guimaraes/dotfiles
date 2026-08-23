@@ -5,6 +5,7 @@
     - secrets.yml
   roles:
     - zsh
+    - st
     - nvim
     - mpv
     - yazi
