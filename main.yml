@@ -1,0 +1,11 @@
+---
+- name: main
+  hosts: localhost
+  roles:
+    - zsh
+    - nvim
+    - yazi
+    - tmux
+    - nsxiv
+    - mpv
+    - xmodmap

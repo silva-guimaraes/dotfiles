@@ -1,0 +1,21 @@
+---
+- name: install
+  become: true
+  when: pacman_install
+  community.general.pacman:
+    state: present
+    name:
+      - tmux
+
+- name: symlink config
+  ansible.builtin.file:
+    src: ~/dotfiles/roles/tmux/files/tmux.conf
+    path: ~/.tmux.conf
+    state: link
+
+# TODO: usar .local
+- name: symlink tmux dir
+  ansible.builtin.file:
+    src: ~/dotfiles/roles/tmux/files/plugins
+    path: ~/.tmux/plugins
+    state: link

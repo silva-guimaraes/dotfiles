@@ -1,0 +1,19 @@
+---
+- name: install
+  become: true
+  when: pacman_install
+  community.general.pacman:
+    state: present
+    name:
+      - mpv
+    
+- name: symlink config
+  ansible.builtin.file:
+    src: "~/dotfiles/roles/mpv/files/{{ item }}"
+    path: "~/.config/mpv/{{ item }}"
+    state: link
+  loop:
+    - mpv.conf
+    - script-opts
+    - scripts
+    

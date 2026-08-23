@@ -1,0 +1,7 @@
+---
+- name: symlink config
+  ansible.builtin.file:
+    src: ~/dotfiles/roles/xmodmap/files/Xmodmap
+    path: ~/.Xmodmap
+    state: link
+
