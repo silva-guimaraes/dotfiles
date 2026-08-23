@@ -1,0 +1,8 @@
+---
+- name: install
+  become: true
+  when: pacman_install
+  community.general.pacman:
+    state: present
+    name:
+      - fastfetch
