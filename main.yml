@@ -4,8 +4,8 @@
   roles:
     - zsh
     - nvim
+    - mpv
     - yazi
     - tmux
     - nsxiv
-    - mpv
     - xmodmap

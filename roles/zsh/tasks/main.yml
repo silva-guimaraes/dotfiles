@@ -1,7 +1,7 @@
 ---
 - name: install
   become: true
-  when: pacman_install
+  when: "{{ pacman_install }}"
   community.general.pacman:
     state: present
     name:
@@ -11,4 +11,11 @@
   ansible.builtin.file:
     src: ~/dotfiles/roles/zsh/files/zshrc
     path: ~/.zshrc
+    state: link
+
+# Só uso oh-my-zsh por conta de um tema (nicoulaj).
+- name: symlink oh-my-zsh
+  ansible.builtin.file:
+    src: ~/dotfiles/roles/zsh/files/oh-my-zsh
+    path: ~/.oh-my-zsh
     state: link
