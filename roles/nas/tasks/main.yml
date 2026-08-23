@@ -1,7 +1,7 @@
 ---
 - name: copy template
   become: true
-  when: (nas_addr is defined) and (nas_password is defined)
+  when: enable_nas and (nas_addr is defined) and (nas_password is defined)
   block:
     - name: copy unit files
       ansible.builtin.template:
