@@ -1,4 +1,31 @@
 ---
+- name: install dependencies
+  become: true
+  when: pacman_install
+  community.general.pacman:
+    state: present
+    name:
+      - glibc
+      - libx11
+      - libxft
+      - imlib2
+      - fontconfig
+      - freetype2
+      - glibc
+      - libxcb
+      - libxrender
+      - libxext
+      - libx11
+      - libxcb
+      - expat
+      - zlib
+      - bzip2
+      - libpng
+      - brotli
+      - libxau
+      - libxdmcp
+      - brotli
+
 - name: full
   tags: terminal
   when: make_install
