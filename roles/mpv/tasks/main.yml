@@ -7,6 +7,11 @@
     name:
       - mpv
     
+- name: ensure .config/mpv
+  ansible.builtin.file:
+    name: ~/.config/mpv
+    state: directory
+
 - name: symlink config
   ansible.builtin.file:
     src: "~/dotfiles/roles/mpv/files/{{ item }}"
