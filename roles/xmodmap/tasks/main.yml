@@ -1,7 +1,18 @@
 ---
+- name: install
+  become: true
+  when: pacman_install
+  community.general.pacman:
+    state: present
+    name:
+      - xorg-xmodmap
+
 - name: symlink config
   ansible.builtin.file:
     src: ~/dotfiles/roles/xmodmap/files/Xmodmap
     path: ~/.Xmodmap
     state: link
+
+- name: run
+  ansible.builtin.command: xmodmap ~/.Xmodmap
 
