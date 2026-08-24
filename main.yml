@@ -4,15 +4,16 @@
   vars_files:
     - secrets.yml
   roles:
-    - zsh
-    - st
-    - nvim
-    - mpv
-    - yazi
-    - tmux
-    - nsxiv
-    - xmodmap
-    - nas
-    - keepassxc
-    - thunderbird
-    - strawberry
+    - { role: zsh,          tags: [zsh, terminal] }
+    - { role: st,           tags: [st, terminal] }
+    - { role: nvim,         tags: nvim }
+    - { role: mpv,          tags: mpv }
+    - { role: yazi,         tags: yazi }
+    - { role: tmux,         tags: [tmux, terminal] }
+    - { role: nsxiv,        tags: nsxiv }
+    - { role: xmodmap,      tags: xmodmap }
+    - { role: nas,          tags: nas }
+    - { role: keepassxc,    tags: keepassxc }
+    - { role: thunderbird,  tags: thunderbird }
+    - { role: strawberry,   tags: strawberry }
+    - { role: fastfetch,    tags: fastfetch }
