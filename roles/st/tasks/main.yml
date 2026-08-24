@@ -5,7 +5,7 @@
   block:
     - name: clone repo
       ansible.builtin.git:
-        repo: git@github.com:silva-guimaraes/st-flexipatch.git
+        repo: https://github.com/silva-guimaraes/st-flexipatch.git
         dest: /tmp/st-flexipatch
     - name: build
       ansible.builtin.command:
