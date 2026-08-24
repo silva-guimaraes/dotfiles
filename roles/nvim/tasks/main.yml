@@ -6,8 +6,13 @@
     state: present
     name:
       - neovim
-    
-- name: symlink init.lua
+
+- name: ensure .config/nvim
+  ansible.builtin.file:
+    name: ~/.config/nvim
+    state: directory
+
+- name: symlink config
   ansible.builtin.file:
     src: "~/dotfiles/roles/nvim/files/{{ item }}"
     path: "~/.config/nvim/{{ item }}"
