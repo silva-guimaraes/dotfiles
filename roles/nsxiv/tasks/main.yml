@@ -7,6 +7,11 @@
     name:
       - nsxiv
 
+- name: ensure .config/nsxiv/exec
+  ansible.builtin.file:
+    name: ~/.config/nsxiv/exec
+    state: directory
+
 - name: symlink key-handler
   ansible.builtin.file:
     src: ~/dotfiles/roles/nsxiv/files/key-handler
