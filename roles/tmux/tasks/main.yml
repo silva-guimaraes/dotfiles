@@ -13,6 +13,11 @@
     path: ~/.tmux.conf
     state: link
 
+- name: ensure .tmux
+  ansible.builtin.file:
+    name: ~/.tmux
+    state: directory
+
 # TODO: usar .local
 - name: symlink tmux dir
   ansible.builtin.file:
