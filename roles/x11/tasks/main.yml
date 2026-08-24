@@ -5,9 +5,11 @@
   community.general.pacman:
     state: present
     name:
+      - xclip
       - xorg-xmodmap
-
-- name: symlink config
+      - xorg-xset
+    
+- name: symlink xmodmap config
   ansible.builtin.file:
     src: ~/dotfiles/roles/xmodmap/files/Xmodmap
     path: ~/.Xmodmap
@@ -15,4 +17,3 @@
 
 - name: run
   ansible.builtin.command: xmodmap ~/.Xmodmap
-

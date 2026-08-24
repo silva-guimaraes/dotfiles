@@ -11,7 +11,7 @@
     - { role: yazi,         tags: yazi }
     - { role: tmux,         tags: [tmux, terminal] }
     - { role: nsxiv,        tags: nsxiv }
-    - { role: xmodmap,      tags: xmodmap }
+    - { role: x11,          tags: x11 }
     - { role: nas,          tags: nas }
     - { role: keepassxc,    tags: keepassxc }
     - { role: thunderbird,  tags: thunderbird }
