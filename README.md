@@ -1,10 +1,7 @@
 # dotfiles
 ## Instalação
 ```sh
-git clone https://github.com/silva-guimaraes/dotfiles
-```
-```sh
-git submodule update --init --recursive
+git clone --recurse-submodules https://github.com/silva-guimaraes/dotfiles
 ```
 ## Rodar
 ```sh
