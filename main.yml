@@ -15,5 +15,5 @@
     - { role: nas,          tags: nas }
     - { role: keepassxc,    tags: keepassxc }
     - { role: thunderbird,  tags: thunderbird }
-    - { role: strawberry,   tags: strawberry }
+    # - { role: strawberry,   tags: strawberry }
     - { role: fastfetch,    tags: fastfetch }
