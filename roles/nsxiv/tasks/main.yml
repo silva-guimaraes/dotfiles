@@ -1,8 +1,8 @@
 ---
 - name: install
   become: true
-  when: pacman_install
-  community.general.pacman:
+  when: pacman_install or apt_install
+  ansible.builtin.package:
     state: present
     name:
       - nsxiv

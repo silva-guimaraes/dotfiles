@@ -26,6 +26,15 @@
       - libxdmcp
       - brotli
 
+- name: install dependencies
+  become: true
+  when: apt_install
+  ansible.builtin.apt:
+    state: present
+    name:
+      - libx11-dev
+      - libimlib2-dev
+
 - name: full
   tags: terminal
   when: make_install
@@ -33,13 +42,14 @@
     - name: clone repo
       ansible.builtin.git:
         repo: https://github.com/silva-guimaraes/st-flexipatch.git
-        dest: /tmp/st-flexipatch
+        dest:  "~{{ ansible_user_id }}/.local/share/st-flexipatch"
+        update: false
     - name: build
       ansible.builtin.command:
+        chdir: "~{{ ansible_user_id }}/.local/share/st-flexipatch"
         cmd: make
-        chdir: /tmp/st-flexipatch
     - name: install
       become: true
       ansible.builtin.command:
+        chdir: "~{{ ansible_user_id }}/.local/share/st-flexipatch"
         cmd: make install
-        chdir: /tmp/st-flexipatch
