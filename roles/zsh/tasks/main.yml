@@ -19,3 +19,9 @@
     src: ~/dotfiles/roles/zsh/files/oh-my-zsh
     path: ~/.oh-my-zsh
     state: link
+
+- name: set default shell
+  become: true
+  ansible.builtin.command:
+    cmd: chsh -s /usr/bin/zsh "{{ ansible_facts['user'] }}"
+
