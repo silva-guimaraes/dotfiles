@@ -4,6 +4,7 @@
   vars_files:
     - secrets.yml
   roles:
+    - { role: x11,          tags: x11 }
     - { role: zsh,          tags: [zsh, terminal] }
     - { role: st,           tags: [st, terminal] }
     - { role: nvim,         tags: nvim }
@@ -11,9 +12,9 @@
     - { role: yazi,         tags: yazi }
     - { role: tmux,         tags: [tmux, terminal] }
     - { role: nsxiv,        tags: nsxiv }
-    - { role: x11,          tags: x11 }
     - { role: nas,          tags: nas }
     - { role: keepassxc,    tags: keepassxc }
+    - { role: fcitx5,       tags: fcitx5 }
     - { role: thunderbird,  tags: thunderbird }
     # - { role: strawberry,   tags: strawberry }
     - { role: fastfetch,    tags: fastfetch }
