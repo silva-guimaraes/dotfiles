@@ -6,14 +6,24 @@
     state: present
     name:
       - xclip
+      - xev
       - xorg-xmodmap
       - xorg-xset
+      - xbindkeys
     
 - name: symlink xmodmap config
   ansible.builtin.file:
     src: ~/dotfiles/roles/x11/files/Xmodmap
     path: ~/.Xmodmap
     state: link
-
-- name: run
+- name: run xmodmap
   ansible.builtin.command: xmodmap ~/.Xmodmap
+
+- name: symlink xbindkeys config
+  ansible.builtin.file:
+    src: ~/dotfiles/roles/x11/files/xbindkeysrc
+    path: ~/.xbindkeysrc
+    state: link
+- name: run xbindkeys
+  ansible.builtin.command: xbindkeys
+
