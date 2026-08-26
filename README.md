@@ -1,5 +1,5 @@
 # dotfiles
-## Instalação
+## Clone
 ```sh
 git clone --recurse-submodules https://github.com/silva-guimaraes/dotfiles
 ```
