@@ -8,13 +8,13 @@
     - { role: zsh,          tags: [zsh, terminal] }
     - { role: st,           tags: [st, terminal] }
     - { role: nvim,         tags: nvim }
+    - { role: fcitx5,       tags: fcitx5 }
     - { role: mpv,          tags: mpv }
     - { role: yazi,         tags: yazi }
     - { role: tmux,         tags: [tmux, terminal] }
     - { role: nsxiv,        tags: nsxiv }
     - { role: nas,          tags: nas }
     - { role: keepassxc,    tags: keepassxc }
-    - { role: fcitx5,       tags: fcitx5 }
     - { role: thunderbird,  tags: thunderbird }
     # - { role: strawberry,   tags: strawberry }
     - { role: fastfetch,    tags: fastfetch }
