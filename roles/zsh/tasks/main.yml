@@ -1,11 +1,25 @@
 ---
-- name: install
+- name: pacman install
   become: true
   when: pacman_install
   community.general.pacman:
     state: present
     name:
       - zsh
+      - fzf
+
+- name: apt install
+  become: true
+  when: apt_install
+  block:
+    - name: install zsh
+      ansible.builtin.apt:
+        name:
+          - zsh
+        state: present
+    - name: install fzf.deb
+      ansible.builtin.apt:
+        deb: https://github.com/junegunn/fzf/releases/download/v0.74.3/fzf_0.74.3_amd64.deb
 
 - name: symlink config
   ansible.builtin.file:
@@ -23,5 +37,4 @@
 - name: set default shell
   become: true
   ansible.builtin.command:
-    cmd: chsh -s /usr/bin/zsh "{{ ansible_facts['user'] }}"
-
+    cmd: chsh -s /usr/bin/zsh "{{ ansible_facts['user_id'] }}"
