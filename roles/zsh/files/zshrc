@@ -1,6 +1,6 @@
 
 
-# isso faz com que todo novo terminal já nasça dentro de uma sessão do tmux
+# Faz com que todo novo terminal nasça dentro de uma sessão tmux
 if [[ $(command -v tmux) ]] && [[ -z $TMUX ]] && [[ $TERM != "screen" ]] && [[ $- == *i* ]]; then
      exec tmux new-session \; choose-tree
 fi
@@ -42,12 +42,11 @@ export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$GOPATH/bin/
 export PATH=$PATH:$HOME/.npm/bin
 # ========== Variáveis de ambiente =================
-
 # Coisas que dependem de uma sessão xorg vem aqui.
 if xrandr >/dev/null 2>&1; then 
     xset r rate 250 45 # teclado rate
 fi 
-
+#
 # ============== oh-my-zsh ==============
 ZSH_THEME="nicoulaj"
 COMPLETION_WAITING_DOTS="true"
@@ -67,7 +66,7 @@ function forkmpvloop {
     done
 }
 alias fml="forkmpvloop"
-
+#
 WALKER_SKIP=".PlayOnLinux,.winevn,.wine,.cache,seed,node_modules,venv,.venv,.git,.nix-defexpr,.wine64,CacheStorage,.local,.opam,Downloads,.go,.claude"
 #
 function fvim {
@@ -77,7 +76,6 @@ function fvim {
     else
         WALKER_ROOT=$1
     fi
-
     FOUND=$(fzf --bind=ctrl-j:accept        \
         --walker-root=$WALKER_ROOT   \
         --multi                      \
@@ -100,7 +98,6 @@ function cdf {
     else
         WALKER_ROOT=$1
     fi
-
     FOUND=$(fzf --bind=ctrl-j:accept \
         --walker="dir,hidden"        \
         --walker-root=$WALKER_ROOT   \
@@ -112,13 +109,12 @@ function cdf {
         --border-label="goto directory" \
         --preview='ls -la {}'  \
         --preview-label=preview)
-
     if [[ -d $FOUND ]]; then
         echo "cd $FOUND"
         cd "$FOUND"
     fi
 }
-
+#
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	command yazi "$@" --cwd-file="$tmp"
@@ -126,6 +122,8 @@ function y() {
 	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
 	rm -f -- "$tmp"
 }
+#
+function deathtouch() { xdotool selectwindow getwindowpid | xargs -r kill; }
 # ============== Funções ==============
 
 # ============== Aliases ==============
@@ -139,7 +137,7 @@ alias neofetch="neofetch --disable resolution icons host theme"
 alias clip="xclip -selection clipboard" 
 alias so="source $HOME/.zshrc"
 alias df="df -h" 
-
+#
 alias jpwine="LC_ALL=ja_JP.sjis wine" 
 alias lt='ls --human-readable --size -1 -S --classify' 
 alias logout="pkill -u $USER"
