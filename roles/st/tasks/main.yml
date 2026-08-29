@@ -36,7 +36,6 @@
       - libimlib2-dev
 
 - name: full
-  tags: terminal
   when: make_install
   block:
     - name: clone repo

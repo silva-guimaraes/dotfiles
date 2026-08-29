@@ -10,7 +10,7 @@
       - xorg-xmodmap
       - xorg-xset
       - xbindkeys
-    
+
 - name: symlink xmodmap config
   ansible.builtin.file:
     src: ~/dotfiles/roles/x11/files/Xmodmap
@@ -26,4 +26,3 @@
     state: link
 - name: run xbindkeys
   ansible.builtin.command: xbindkeys
-
