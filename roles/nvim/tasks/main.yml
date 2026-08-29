@@ -6,12 +6,13 @@
     state: present
     name:
       - neovim
+      - tree-sitter-cli
 
 - name: apt install
   become: true
   when: apt_install
   ansible.builtin.apt:
-    deb: https://github.com/neovim/neovim-releases/releases/download/v0.11.4/nvim-linux-x86_64.deb
+    deb: https://github.com/neovim/neovim-releases/releases/download/v0.12.5/nvim-linux-x86_64.deb
 
 - name: ensure .config/nvim
   ansible.builtin.file:
@@ -26,3 +27,4 @@
   loop:
     - init.lua
     - lua
+    - nvim-pack-lock.json

@@ -7,120 +7,96 @@
 ---------------------
 -- nvim-treesitter --
 ---------------------
-vim.filetype.add({
-  extension = {
-    gotmpl = 'gotmpl',
-  },
-  pattern = {
-    ["*%.tmpl"] = "helm",
-  },
-})
-require 'nvim-treesitter.configs'.setup {
-    -- A list of parser names, or "all" (the four listed parsers should always be installed)
-    ensure_installed = {
-        "c", "lua", "vim", "go", "python", "javascript", "html", "css"
-        --[[ , "help" ]]
-    },
-    -- Install parsers synchronously (only applied to `ensure_installed`)
-    sync_install = false,
-    -- Automatically install missing parsers when entering buffer
-    -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-    auto_install = true,
-    highlight = {
-        -- `false` will disable the whole extension
-        enable = true,
-        -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-        -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-        -- Using this option may slow down your editor, and you may see some duplicate highlights.
-        -- Instead of true it can also be a list of languages
-        additional_vim_regex_highlighting = false,
-    },
-    indent = {
-        enable = true
-    }
-}
-local treesitter_parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-treesitter_parser_config.templ = {
-    install_info = {
-        url = "https://github.com/vrischmann/tree-sitter-templ.git",
-        files = { "src/parser.c", "src/scanner.c" },
-        branch = "master",
-    },
-}
-
-vim.treesitter.language.register("templ", "templ")
-
-treesitter_parser_config.d2 = {
-    install_info = {
-        url = 'https://git.pleshevski.ru/pleshevskiy/tree-sitter-d2',
-        revision = 'main',
-        files = { 'src/parser.c', 'src/scanner.cc' },
-    },
-    filetype = 'd2',
-};
-vim.treesitter.language.register('d2', 'd2')
+-- branch main. É uma reescrita incompatível com o master: não existe mais
+-- `configs.setup{}`, nem os módulos `highlight`/`indent`, nem `ensure_installed`
+-- ou `auto_install`. O plugin virou só instalador de parsers + coleção de
+-- queries; o resto é API nativa do neovim.
+--
+-- parsers e queries vão para ~/.local/share/nvim/site/{parser,queries}
+-- (o install_dir padrão, que já está no runtimepath).
+--
+-- requer o tree-sitter-cli no PATH.
 
 vim.filetype.add({
     extension = {
-        templ = "templ",
+        gotmpl = 'gotmpl',
+        templ = 'templ',
+    },
+    pattern = {
+        ["*%.tmpl"] = "helm",
     },
 })
 
+local ts = require('nvim-treesitter')
 
+-- equivalente ao antigo ensure_installed. roda assíncrono, não trava o startup.
+-- no-op para o que já estiver instalado.
+ts.install({
+    'c', 'lua', 'vim', 'vimdoc', 'query',
+    'markdown', 'markdown_inline',
+    'go', 'gomod', 'gowork', 'gotmpl',
+    'python', 'javascript', 'html', 'css',
+    'templ', 'ocaml',
+})
 
+-- highlight, indent e auto_install: no master isso era configuração declarativa,
+-- aqui tem que ser feito na mão. highlight e indent por buffer, e o auto_install
+-- vira "não achou o parser, instala e liga quando terminar".
+local grupo = vim.api.nvim_create_augroup('foo.treesitter', { clear = true })
 
-
-----------
--- lsp ---
-----------
-
-local lspconfig = require('lspconfig')
--- lspconfig.ts_ls.setup{
---     settings = {
---         implicitProjectConfiguration = {
---             checkJs = true
---         },
---     }
--- }
-lspconfig.templ.setup {}
-lspconfig.html.setup { filetypes = { "html", "templ", "cshtml", "javascript" }, }
-lspconfig.htmx.setup { filetypes = { "html", "templ" }, }
-
-vim.keymap.set("n", "<leader>lr", function()
-    vim.cmd [[ LspRestart ]]
-    print("Lsp restarted!")
-end, { noremap = true })
-
-vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
-
-
-require("mason").setup {
-    log_level = vim.log.levels.DEBUG
-}
-local lsp = require('lsp-zero')
-lsp.preset('recommended')
-lsp.nvim_workspace()
-lsp.setup()
-
-
-if vim.fn.has('nvim-0.11.0') == 1 then
-    -- Usar a versão do lsp gerenciado pelo opam
-    vim.lsp.config['ocamllsp'] = {
-        cmd = { 'ocamllsp' },
-        filetypes = { 'ocaml' },
-        root_markers = { 'dune-project', 'dune' },
-    }
-    vim.lsp.enable('ocamllsp')
+local function ligar(buf, lang)
+    if not vim.api.nvim_buf_is_valid(buf) then
+        return false
+    end
+    if not pcall(vim.treesitter.start, buf, lang) then
+        return false
+    end
+    vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    return true
 end
 
+local disponiveis ---@type table<string, true>?
 
+vim.api.nvim_create_autocmd('FileType', {
+    group = grupo,
+    callback = function(ev)
+        local lang = vim.treesitter.language.get_lang(ev.match)
+        if not lang or ligar(ev.buf, lang) then
+            return
+        end
 
+        -- get_available() dispara o autocmd User TSUpdate a cada chamada,
+        -- então vale a pena cachear.
+        if not disponiveis then
+            disponiveis = {}
+            for _, l in ipairs(ts.get_available()) do
+                disponiveis[l] = true
+            end
+        end
+        if not disponiveis[lang] then
+            return
+        end
 
-
+        ts.install({ lang }):await(function(err)
+            if err then
+                return
+            end
+            vim.schedule(function()
+                ligar(ev.buf, lang)
+            end)
+        end)
+    end,
+})
 
 ----------
 -- misc --
 ----------
+
+-- comment.nvim e nvim-autopairs. o setup() destes dois morava no bloco
+-- config = function() ... end do packer.lua; vim.pack não tem esse conceito,
+-- então a configuração vem para cá.
+require('Comment').setup()
+require('nvim-autopairs').setup {}
 
 -- trouble. diz o que deu de errado com o lsp.
 require('trouble').setup {

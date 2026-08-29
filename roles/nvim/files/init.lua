@@ -1,10 +1,11 @@
 local dubious = false
 local plausible = true
 
-print('fak emac')      -- fak emac
+print('fak emac')
 
-require('foo.packer')  -- plugins instalados
-require('foo.plugins') -- configurações de plugins
+require('foo.pack')    -- instala/carrega os plugins
+require('foo.plugins') -- configura os plugins
+require('foo.lsp')
 
 -- vim.g.mapleader = '\\'
 
