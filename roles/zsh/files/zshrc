@@ -41,6 +41,7 @@ export PATH=$PATH:$HOME/shell/
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$GOPATH/bin/
 export PATH=$PATH:$HOME/.npm/bin
+export PATH=$PATH:/usr/local/go/bin
 # ========== Variáveis de ambiente =================
 # Coisas que dependem de uma sessão xorg vem aqui.
 if xrandr >/dev/null 2>&1; then 

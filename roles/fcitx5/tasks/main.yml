@@ -21,3 +21,9 @@
   loop:
     - profile
     - config
+
+- name: debian set default
+  when: apt_install
+  ansible.builtin.command: im-config -n fcitx5
+  args:
+    creates: "~{{ ansible_facts['user_id'] }}/.xinputrc"
