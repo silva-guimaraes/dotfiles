@@ -24,5 +24,3 @@
     src: ~/dotfiles/roles/x11/files/xbindkeysrc
     path: ~/.xbindkeysrc
     state: link
-- name: run xbindkeys
-  ansible.builtin.command: xbindkeys

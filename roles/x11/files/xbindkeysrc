@@ -40,11 +40,8 @@
 "xbindkeys_show" 
   control+shift + q
 
-"playerctl play"
+"playerctl play-pause"
    XF86AudioPlay
-
-"playerctl pause"
-   XF86AudioPause
 
 "playerctl next"
    XF86AudioNext
