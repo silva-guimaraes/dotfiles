@@ -1,0 +1,9 @@
+---
+- name: copy sudoers
+  become: true
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: "/etc/sudoers.d/{{ item }}"
+    validate: /usr/sbin/visudo -csf %s
+  loop:
+    - 10-pwfeedback
